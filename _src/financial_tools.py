@@ -30,7 +30,7 @@ class FMPClient:
         elif endpoint in ('historical-price-eod'):
             url = f"{self.base_url}/{endpoint}/full?symbol={symbol}&apikey={self.api_key}"
         elif endpoint in ('news'):
-            url = f"{self.base_url}/{endpoint}/stock?symbols={symbol}&from={from_date_1y}&to={to_date}&page=0&limit=100&apikey={self.api_key}"
+            url = f"{self.base_url}/{endpoint}/stock?symbols={symbol}&from={from_date_1y}&to={to_date}&page=0&limit=300&apikey={self.api_key}"
         elif endpoint in ('sec-filings-search'):
             url = f"{self.base_url}/{endpoint}/symbol?symbol={symbol}&from={from_date}&to={to_date}&page=0&limit=300&apikey={self.api_key}"
         elif endpoint in ('sec-filings-8k'):

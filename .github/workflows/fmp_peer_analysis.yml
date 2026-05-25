@@ -1,0 +1,43 @@
+name: Ad-Hoc Peer Analysis
+
+on:
+  workflow_dispatch:
+    inputs:
+      category:
+        description: 'Industry Group (e.g., Refinery)'
+        required: true
+        default: 'Custom_Peers'
+      tickers:
+        description: 'Comma-separated, non-case-sensitive tickers (target_ticker, peer1, peer2,...)'
+        required: true
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Peer Analysis Script
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+          TARGET_CATEGORY: ${{ github.event.inputs.category }}
+          TARGET_TICKERS: ${{ github.event.inputs.tickers }}
+        run: python a2.peer_analysis.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add outputs/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Ad-hoc Peer Analysis" && git push)
