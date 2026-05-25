@@ -1,0 +1,64 @@
+.env
+.env.*
+credentials.json
+token.json
+token.txt
+secrets.json
+config.json
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+miniforge3/
+.conda/
+
+# Environment variables and secrets
+.env
+.env.*
+*.env
+credentials.json
+token.json
+token.txt
+secrets.json
+config.json
+*.pem
+id_rsa
+id_ed25519
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# VS Code / IDE
+.vscode/
+.idea/
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Google Drive temporary sync folders
+.tmp.driveupload/
