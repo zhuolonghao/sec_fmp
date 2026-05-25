@@ -64,4 +64,7 @@ Thumbs.db
 # Google Drive temporary sync folders
 .tmp.driveupload/
 .ipynb_checkpoints
-.ipynb_checkpoints/*
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+Untitled.*
+Untitled*

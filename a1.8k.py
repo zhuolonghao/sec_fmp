@@ -23,6 +23,14 @@ output_dir.mkdir(parents=True, exist_ok=True)
 # --- Instantiate the Classes ---
 client1 = FMPClient()
 filings_8k = client1.get_data('sec-filings-8k', "ALL")
+
+# ==========================================
+# FIX 1: Robust check for null or empty data
+# ==========================================
+if not filings_8k:
+    print("⚠️ No 8-K filings found today (API returned null or empty). Exiting early.")
+    sys.exit(0) # Safely stops the script here without crashing the GitHub Action
+
 pd.DataFrame(filings_8k).to_csv(output_dir / "filings_8k.csv", index=False)
 
 SEC_BASE = "https://www.sec.gov"
@@ -148,10 +156,26 @@ for i, filing in enumerate(filings_8k, start=1):
         })
     time.sleep(0.2)
 
+# ==========================================
+# FIX 2: Prevent Pandas errors if no results
+# ==========================================
+if not all_results:
+    print("⚠️ No valid SEC documents were processed. Exiting early.")
+    sys.exit(0)
+
 pd.DataFrame(all_results).to_csv(output_dir / "filings_8k_assessment.csv", index=False)
 
 results_df = pd.DataFrame(all_results)
-results_df = results_df[results_df["matched"] == True]
-results_df = results_df[results_df["document_type"] == "8-K"]
-results_df = results_df[["symbol", "filingDate", "filing_detail_url", "document_type"]]
-results_df.to_csv(output_dir / "filings_8k_assessment_matched.csv", index=False)
+
+# Safety check: Ensure the columns exist before trying to filter them
+if "matched" in results_df.columns and "document_type" in results_df.columns:
+    results_df = results_df[results_df["matched"] == True]
+    results_df = results_df[results_df["document_type"] == "8-K"]
+    
+    # Only export if there is actual data left after filtering
+    if not results_df.empty:
+        results_df = results_df[["symbol", "filingDate", "filing_detail_url", "document_type"]]
+        results_df.to_csv(output_dir / "filings_8k_assessment_matched.csv", index=False)
+        print("✅ Matched documents successfully exported.")
+    else:
+        print("ℹ️ No matched 8-K documents found today. Skipping matched export.")
