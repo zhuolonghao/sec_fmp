@@ -38,6 +38,8 @@ id_ed25519
 */.ipynb_checkpoints/
 Untitled.*
 Untitled*
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
 
 # VS Code / IDE
 .vscode/
@@ -66,5 +68,3 @@ Thumbs.db
 
 # Google Drive temporary sync folders
 .tmp.driveupload/
-.ipynb_checkpoints
-.ipynb_checkpoints/
