@@ -21,7 +21,7 @@ class FMPClient:
         """
         # Calculate date range for past 6 months
         to_date = datetime.now().strftime('%Y-%m-%d')
-        yesterday = (datetime.now() - timedelta(days=2)).strftime('%Y-%m-%d')
+        yesterday = (datetime.now() - timedelta(days=3)).strftime('%Y-%m-%d')
         from_date = (datetime.now() - timedelta(days=365*3)).strftime('%Y-%m-%d')
         from_date_1y = (datetime.now() - timedelta(days=180)).strftime('%Y-%m-%d')
         
