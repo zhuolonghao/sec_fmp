@@ -21,7 +21,7 @@ class FMPClient:
         """
         # Calculate date range for past 6 months
         to_date = datetime.now().strftime('%Y-%m-%d')
-        yesterday = (datetime.now() - timedelta(days=3)).strftime('%Y-%m-%d')
+        yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
         from_date = (datetime.now() - timedelta(days=365*3)).strftime('%Y-%m-%d')
         from_date_1y = (datetime.now() - timedelta(days=180)).strftime('%Y-%m-%d')
         
@@ -34,7 +34,7 @@ class FMPClient:
         elif endpoint in ('sec-filings-search'):
             url = f"{self.base_url}/{endpoint}/symbol?symbol={symbol}&from={from_date}&to={to_date}&page=0&limit=300&apikey={self.api_key}"
         elif endpoint in ('sec-filings-8k'):
-            url = f"{self.base_url}/{endpoint}?&from={yesterday}&to={to_date}&page=0&limit=1000&apikey={self.api_key}"
+            url = f"{self.base_url}/{endpoint}?&from={to_date}&to={to_date}&page=0&limit=1000&apikey={self.api_key}"
         else:
             url = f"{self.base_url}/{endpoint}?symbol={symbol}&period=quarter&limit=20&apikey={self.api_key}"
         try:
