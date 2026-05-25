@@ -1,0 +1,37 @@
+name: Daily 8-K Assessment
+
+on:
+  schedule:
+    - cron: '19 23 * * 1-5' # Runs at 10 PM UTC, Monday through Friday
+  workflow_dispatch:
+
+jobs:
+  run-assessment:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write 
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip' # Speeds up daily runs
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run 8-K Script
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+        run: python a1.8k.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add sec_filings_8k/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Automated 8-K Assessment" && git push)
