@@ -35,6 +35,9 @@ id_ed25519
 
 # Jupyter Notebook
 .ipynb_checkpoints/
+*/.ipynb_checkpoints/
+Untitled.*
+Untitled*
 
 # VS Code / IDE
 .vscode/
@@ -65,6 +68,3 @@ Thumbs.db
 .tmp.driveupload/
 .ipynb_checkpoints
 .ipynb_checkpoints/
-**/.ipynb_checkpoints/
-Untitled.*
-Untitled*
