@@ -38,8 +38,39 @@ jobs:
         run: python a2.peer_analysis.py
 
       - name: Commit and push changes
+        id: commit_step
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git add outputs/
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Ad-hoc Peer Analysis" && git push)
+          
+          if ! git diff --staged --quiet; then
+            git commit -m "Ad-hoc Peer Analysis: ${{ github.event.inputs.category }}"
+            git push
+            echo "changes_pushed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "No new analysis to commit."
+            echo "changes_pushed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Send Email Notification
+        if: steps.commit_step.outputs.changes_pushed == 'true'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "Peer Analysis Complete: ${{ github.event.inputs.category }}"
+          to: longhao.zhuo@gmail.com
+          from: GitHub Actions Tracker
+          body: |
+            The Ad-Hoc Peer Analysis has finished running.
+            
+            Details:
+            - Category: ${{ github.event.inputs.category }}
+            - Tickers Evaluated: ${{ github.event.inputs.tickers }}
+            
+            You can review the generated outputs in your repository here:
+            https://github.com/${{ github.repository }}/commits/main
