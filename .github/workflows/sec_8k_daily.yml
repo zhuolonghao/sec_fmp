@@ -2,7 +2,7 @@ name: Daily 8-K Assessment
 
 on:
   schedule:
-    - cron: '19 23 * * 1-5' # Runs at 10 PM UTC, Monday through Friday
+    - cron: '19 22 * * 1-5' # Runs at 10:19 PM UTC, Monday through Friday
   workflow_dispatch:
 
 jobs:
@@ -30,8 +30,37 @@ jobs:
         run: python a1.8k.py
 
       - name: Commit and push changes
+        id: commit_step
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git add sec_filings_8k/
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Automated 8-K Assessment" && git push)
+          
+          # Check if there are staged changes
+          if ! git diff --staged --quiet; then
+            git commit -m "Automated 8-K Assessment"
+            git push
+            # Set an output variable so the next step knows changes occurred
+            echo "changes_pushed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "No new filings to commit."
+            echo "changes_pushed=false" >> "$GITHUB_OUTPUT"
+          fi
+          
+      - name: Send Email Notification
+        if: steps.commit_step.outputs.changes_pushed == 'true'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "SEC 8K filings Tracker: Updated"
+          to: longhao.zhuo@gmail.com
+          from: GitHub Actions Tracker
+          body: |
+            The automated tracker has detected updates to the 8-K filings.
+            
+            You can review the new files in your repository here:
+            https://github.com/${{ github.repository }}/commits/main
