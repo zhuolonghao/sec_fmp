@@ -38,7 +38,7 @@ class FMPClient:
         else:
             url = f"{self.base_url}/{endpoint}?symbol={symbol}&period=quarter&limit=20&apikey={self.api_key}"
         try:
-            print(f"   Fetching {endpoint} for {symbol}...")
+            print(f"   Fetching {endpoint} for {symbol}... on {to_date}")
             response = requests.get(url)
             response.raise_for_status()
             data = response.json()
