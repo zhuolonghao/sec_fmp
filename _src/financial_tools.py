@@ -5,6 +5,7 @@ import os
 import ast
 from datetime import datetime, timedelta
 from pandas.tseries.offsets import MonthEnd
+from zoneinfo import ZoneInfo
 
 class FMPClient:
     """
