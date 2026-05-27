@@ -1,0 +1,51 @@
+Category,Metric,CNC,ELV,MOH,OSCR
+Header,Fiscal Period,2026-Q1,2026-Q1,2026-Q1,2026-Q1
+Header,Statement Date,2026-03-31,2026-03-31,2026-03-31,2026-03-31
+Header,Filing Date,2026-04-28,2026-04-22,2026-04-23,2026-05-07
+Revenue & Margin,Segment-1,Medicaid Segment,Health Benefits Segment,Medicaid Solutions Segment,-
+Revenue & Margin,Segment-1 %,75.8%,84.8%,74.7%,-
+Revenue & Margin,Segment-2,Commercial Segment,Carelon Services Segment,Medicare,-
+Revenue & Margin,Segment-2 %,21.6%,36.4%,14.5%,-
+Revenue & Margin,Segment-3,Other Operating Segment,Segment Eliminations,Marketplace,-
+Revenue & Margin,Segment-3 %,2.6%,-21.1%,10.4%,-
+Revenue & Margin,Others,-,Segment Eliminations,Other Segments,-
+Revenue & Margin,Others %,-,-0.1%,0.4%,-
+Revenue & Margin,Revenue Total ($k),"198,101,000","200,415,000","45,075,000","13,302,358"
+Revenue & Margin,Rev-CoGS / Rev,14.93%,23.16%,9.59%,17.39%
+Revenue & Margin,Rev-CoGS-SG&A / Rev,8.21%,20.01%,2.90%,8.24%
+Revenue & Margin,Rev-CoGs-SG&A-Other.OpEx / Rev,-3.68%,3.81%,1.16%,0.08%
+Revenue & Margin,Net Income / Rev,-3.25%,2.62%,0.42%,-0.30%
+EBITDA,Net Income ($k),"-6,443,000","5,243,000","188,000","-39,426"
+EBITDA,D & A ($k),"932,000","1,527,000","142,000","29,180"
+EBITDA,Net Interest Expense ($k),"672,000","1,415,000","203,000","16,990"
+EBITDA,Tax Provision ($k),"77,037","980,000","40,000","12,651"
+EBITDA,EBITDA ($k),"-4,761,963","9,165,000","573,000","19,395"
+EBITDA,Stock-Based Comp ($k),"154,000","250,000","33,000","78,648"
+EBITDA,Others Adj.,TBD,TBD,TBD,TBD
+EBITDA,Adj. EBITDA,TBD,TBD,TBD,TBD
+EBITDA,Covenant EBITDA,TBD,TBD,TBD,TBD
+Capital Structure,Stock Price,32.74,292.75,133.30,11.47
+Capital Structure,O/S Shares,"492,069,000","220,500,000","51,000,000","298,184,000"
+Capital Structure,Market Capitalization ($k),"16,110,339","64,551,375","6,798,300","3,420,170"
+Capital Structure,Cash ($k),"21,264,000","9,657,000","5,314,000","4,805,139"
+Capital Structure,Debt ($k),"16,371,000","31,842,000","3,947,000","430,876"
+Capital Structure,Enterprise Value ($k),"11,217,339","86,736,375","5,431,300","-954,093"
+Capital Structure,netCommonStockIssuance ($k),"-19,000","-1,087,000",0,"1,139"
+Capital Structure,netDebtIssuance ($k),"-1,046,000","-761,000",0,0
+Liquidity & Cash Flow,DSO,37.9,31.2,29.0,15.2
+Liquidity & Cash Flow,DIO,0.0,0.0,0.0,0.0
+Liquidity & Cash Flow,DPO,36.7,34.1,5.0,24.0
+Liquidity & Cash Flow,CCC,1.2,-2.9,24.0,-8.8
+Liquidity & Cash Flow,OCF ($k),"7,178,000","7,605,000","357,000","2,835,292"
+Liquidity & Cash Flow,CapEx ($k),"-832,000","-1,155,000","-106,000","-36,140"
+Liquidity & Cash Flow,FCF ($k),"6,346,000","6,450,000","251,000","2,799,152"
+BQR-Mid-Mkt,Total Debt / Equity,0.8x,0.7x,1.0x,0.3x
+BQR,Total Debt / Adj Ebitda,999.0x,3.5x,6.9x,22.2x
+BQR,Adj Ebitda / Interest Expense,-999.0x,6.5x,2.8x,1.1x
+BQR,Net Income before extraordinary ($k),"-6,443,000","5,243,000","188,000","-39,426"
+BQR,(NCO-CAPEX) / Total Debt,38.76%,20.26%,6.36%,649.64%
+BQR,Score: Operating Leverage,75,48,75,75
+BQR,Score: ICR,75,48,58,75
+BQR,Score: Net Income,75,15,42,75
+BQR,Score: FCF/Debt,35,45,65,15
+BQR,BQR,65.0,39.0,61.7,60.0
