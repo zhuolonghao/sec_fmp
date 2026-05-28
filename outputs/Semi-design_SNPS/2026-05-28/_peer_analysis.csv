@@ -1,0 +1,51 @@
+Category,Metric,ALTR,ANSS,ARM,CDNS,SNPS
+Header,Fiscal Period,2024-Q4,2025-Q1,2026-Q4,2026-Q1,2026-Q2
+Header,Statement Date,2024-12-31,2025-03-31,2026-03-31,2026-03-31,2026-04-30
+Header,Filing Date,2025-02-20,2025-04-30,2026-05-06,2026-05-01,2026-05-27
+Revenue & Margin,Segment-1,Maintenance,Service,Royalty,Product and maintenance,License and Maintenance
+Revenue & Margin,Segment-1 %,59.3%,50.3%,53.1%,91.0%,49.5%
+Revenue & Margin,Segment-2,Perpetual Licenses,Lease License Revenue,License And Other Revenue,Technology Service,License
+Revenue & Margin,Segment-2 %,16.8%,37.3%,46.9%,9.0%,28.5%
+Revenue & Margin,Segment-3,Software Related Services,Perpetual License Revenue,-,-,Technology Service
+Revenue & Margin,Segment-3 %,9.2%,12.4%,-,-,22.0%
+Revenue & Margin,Others,"Client Engineering Services, Professional Software Services, Other Product And Service",-,-,-,Technology Service
+Revenue & Margin,Others %,14.7%,-,-,-,9.7%
+Revenue & Margin,Revenue Total ($k),"665,788","2,583,095","4,920,000","5,528,613","8,679,380"
+Revenue & Margin,Rev-CoGS / Rev,80.11%,88.78%,94.63%,88.85%,73.47%
+Revenue & Margin,Rev-CoGS-SG&A / Rev,38.89%,50.31%,74.39%,68.05%,47.55%
+Revenue & Margin,Rev-CoGs-SG&A-Other.OpEx / Rev,2.54%,28.87%,18.31%,31.11%,7.03%
+Revenue & Margin,Net Income / Rev,2.13%,22.95%,18.37%,21.18%,8.90%
+EBITDA,Net Income ($k),"14,175","592,779","904,000","1,170,969","772,789"
+EBITDA,D & A ($k),"42,164","144,597","249,000","196,427","1,470,769"
+EBITDA,Net Interest Expense ($k),"-17,159","-11,222","-111,000","43,674","334,462"
+EBITDA,Tax Provision ($k),"18,455","148,830","253,000","423,485","31,849"
+EBITDA,EBITDA ($k),"57,635","874,984","1,295,000","1,834,555","2,609,869"
+EBITDA,Stock-Based Comp ($k),"67,680","282,479","506,000","372,581","986,135"
+EBITDA,Others Adj.,TBD,TBD,TBD,TBD,TBD
+EBITDA,Adj. EBITDA,TBD,TBD,TBD,TBD,TBD
+EBITDA,Covenant EBITDA,TBD,TBD,TBD,TBD,TBD
+Capital Structure,Stock Price,109.11,316.56,151.28,277.87,482.60
+Capital Structure,O/S Shares,"85,289,000","87,455,000","1,063,000,000","272,061,000","190,513,000"
+Capital Structure,Market Capitalization ($k),"9,305,883","27,684,755","160,810,640","75,597,590","91,941,574"
+Capital Structure,Cash ($k),"561,898","1,758,155","2,751,000","1,406,668","2,412,472"
+Capital Structure,Debt ($k),"259,123","836,086","432,000","3,083,354","10,841,960"
+Capital Structure,Enterprise Value ($k),"9,003,108","26,762,686","158,491,640","77,274,276","100,371,062"
+Capital Structure,netCommonStockIssuance ($k),0,0,"39,000","-127,390",0
+Capital Structure,netDebtIssuance ($k),0,0,0,"425,000",0
+Liquidity & Cash Flow,DSO,78.6,145.4,156.1,56.8,61.0
+Liquidity & Cash Flow,DIO,-14.3,0.0,0.0,167.9,62.7
+Liquidity & Cash Flow,DPO,14.8,28.6,74.7,276.6,63.5
+Liquidity & Cash Flow,CCC,49.5,116.8,81.4,-51.9,60.2
+Liquidity & Cash Flow,OCF ($k),"154,084","911,858","1,524,000","1,597,542","2,796,464"
+Liquidity & Cash Flow,CapEx ($k),"-14,086","-44,993","-566,000","-167,630","-162,669"
+Liquidity & Cash Flow,FCF ($k),"139,998","866,865","972,000","1,429,912","2,633,795"
+BQR-Mid-Mkt,Total Debt / Equity,0.3x,0.1x,0.1x,0.5x,0.4x
+BQR,Total Debt / Adj Ebitda,4.5x,1.0x,0.3x,1.7x,4.2x
+BQR,Adj Ebitda / Interest Expense,-999.0x,-999.0x,-999.0x,42.0x,7.8x
+BQR,Net Income before extraordinary ($k),"14,175","592,779","904,000","1,170,969","772,789"
+BQR,(NCO-CAPEX) / Total Debt,54.03%,103.68%,225.00%,46.38%,24.29%
+BQR,Score: Operating Leverage,55,25,15,35,52
+BQR,Score: ICR,75,75,75,15,45
+BQR,Score: Net Income,55,35,35,25,35
+BQR,Score: FCF/Debt,15,15,15,25,42
+BQR,BQR,48.0,32.5,29.0,27.0,44.2
