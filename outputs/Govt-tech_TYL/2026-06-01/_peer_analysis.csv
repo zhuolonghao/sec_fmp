@@ -1,0 +1,51 @@
+Category,Metric,AXON,NOW,ORCL,PLTR,SAP,TYL
+Header,Fiscal Period,2026-Q1,2026-Q1,2026-Q3,2026-Q1,2026-Q1,2026-Q1
+Header,Statement Date,2026-03-31,2026-03-31,2026-02-28,2026-03-31,2026-03-31,2026-03-31
+Header,Filing Date,2026-05-07,2026-04-23,2026-03-11,2026-05-05,2026-04-28,2026-04-29
+Revenue & Margin,Segment-1,Software And Sensors Segment,License and Service,Cloud And License Business,Government Operating Segment,Cloud,Maintenance
+Revenue & Margin,Segment-1 %,43.3%,97.0%,85.8%,53.7%,83.0%,59.7%
+Revenue & Margin,Segment-2,TASER X2,Technology Service,Services Business,Commercial,Services,Professional Services
+Revenue & Margin,Segment-2 %,32.9%,3.0%,9.1%,46.3%,17.0%,32.5%
+Revenue & Margin,Segment-3,Axon Body,Technology Service,Hardware Business,-,-,Hardware and Other
+Revenue & Margin,Segment-3 %,14.3%,3.1%,5.1%,-,-,6.0%
+Revenue & Margin,Others,Platform Solutions,-,-,-,-,Software Licenses And Royalties
+Revenue & Margin,Others %,9.6%,-,-,-,-,1.7%
+Revenue & Margin,Revenue Total ($k),"2,983,248","13,960,000","64,077,000","5,224,174","37,342,000","2,380,678"
+Revenue & Margin,Rev-CoGS / Rev,59.32%,76.56%,66.44%,84.07%,72.79%,45.57%
+Revenue & Margin,Rev-CoGS-SG&A / Rev,23.68%,35.50%,50.51%,49.30%,44.89%,25.75%
+Revenue & Margin,Rev-CoGs-SG&A-Other.OpEx / Rev,1.48%,13.44%,30.83%,38.13%,26.88%,15.47%
+Revenue & Margin,Net Income / Rev,6.91%,12.59%,25.30%,43.67%,19.58%,13.26%
+EBITDA,Net Income ($k),"206,243","1,757,000","16,210,000","2,281,529","7,313,000","315,731"
+EBITDA,D & A ($k),"94,069","836,000","8,143,000","26,288","931,875","149,881"
+EBITDA,Net Interest Expense ($k),"39,622","-412,000","3,517,000","-245,134","-369,924","4,815"
+EBITDA,Tax Provision ($k),"-24,202","622,000","2,126,000","32,255","3,072,000","85,719"
+EBITDA,EBITDA ($k),"315,732","2,803,000","29,996,000","2,094,938","10,946,951","556,146"
+EBITDA,Stock-Based Comp ($k),"493,992","2,032,000","4,908,000","730,286","1,244,000","150,775"
+EBITDA,Others Adj.,TBD,TBD,TBD,TBD,TBD,TBD
+EBITDA,Adj. EBITDA,TBD,TBD,TBD,TBD,TBD,TBD
+EBITDA,Covenant EBITDA,TBD,TBD,TBD,TBD,TBD,TBD
+Capital Structure,Stock Price,424.69,104.55,145.40,146.28,148.11,342.38
+Capital Structure,O/S Shares,"80,150,000","1,035,138,000","2,855,000,000","2,393,869,000","1,163,000,000","42,726,000"
+Capital Structure,Market Capitalization ($k),"34,038,904","108,223,678","415,117,000","350,175,157","172,256,316","14,628,528"
+Capital Structure,Cash ($k),"458,921","2,702,000","38,455,000","2,291,631","9,648,000","316,010"
+Capital Structure,Debt ($k),"1,828,169","2,431,000","162,165,000","211,977",0,"47,960"
+Capital Structure,Enterprise Value ($k),"35,408,152","107,952,678","538,827,000","348,095,503","162,608,316","14,360,478"
+Capital Structure,netCommonStockIssuance ($k),0,"-2,072,000","7,000","4,899","-2,279,000","-246,262"
+Capital Structure,netDebtIssuance ($k),"-81,110",0,0,0,"-559,000","-600,000"
+Liquidity & Cash Flow,DSO,110.7,49.6,53.5,73.4,71.6,102.8
+Liquidity & Cash Flow,DIO,103.5,-0.8,0.0,0.0,0.0,0.0
+Liquidity & Cash Flow,DPO,41.2,27.6,139.7,63.9,83.2,61.3
+Liquidity & Cash Flow,CCC,173.0,21.2,-86.3,9.5,-11.6,41.4
+Liquidity & Cash Flow,OCF ($k),"154,028","5,437,000","23,514,000","2,724,375","8,862,290","704,647"
+Liquidity & Cash Flow,CapEx ($k),"-134,521","-804,000","-48,250,000","-35,099","-796,770","-16,917"
+Liquidity & Cash Flow,FCF ($k),"19,507","4,633,000","-24,736,000","2,689,276","8,056,838","687,730"
+BQR-Mid-Mkt,Total Debt / Equity,0.5x,0.2x,4.2x,0.0x,0.0x,0.0x
+BQR,Total Debt / Adj Ebitda,5.8x,0.9x,5.4x,0.1x,0.0x,0.1x
+BQR,Adj Ebitda / Interest Expense,8.0x,-999.0x,8.5x,-999.0x,-999.0x,115.5x
+BQR,Net Income before extraordinary ($k),"206,243","1,757,000","16,210,000","2,281,529","7,313,000","315,731"
+BQR,(NCO-CAPEX) / Total Debt,1.07%,190.58%,-15.25%,1268.66%,99900.00%,1433.97%
+BQR,Score: Operating Leverage,65,25,65,15,15,15
+BQR,Score: ICR,45,75,45,75,75,15
+BQR,Score: Net Income,35,25,15,25,15,35
+BQR,Score: FCF/Debt,75,15,75,15,15,15
+BQR,BQR,57.0,30.0,52.0,26.5,24.0,20.0
