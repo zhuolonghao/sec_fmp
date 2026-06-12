@@ -1,0 +1,51 @@
+Category,Metric,ANET,CIEN,CSCO,LITE,NOK
+Header,Fiscal Period,2026-Q1,2026-Q2,2026-Q3,2026-Q3,2026-Q1
+Header,Statement Date,2026-03-31,2026-05-31,2026-04-30,2026-03-31,2026-03-31
+Header,Filing Date,2026-05-06,2026-06-04,2026-05-19,2026-05-06,2026-03-31
+Revenue & Margin,Segment-1,Product,Networking Platforms Segment,Networking,-,EMEA Region
+Revenue & Margin,Segment-1 %,84.1%,75.8%,50.0%,-,22.0%
+Revenue & Margin,Segment-2,Service,Global Services,Service,-,Americas
+Revenue & Margin,Segment-2 %,15.9%,13.4%,26.6%,-,18.6%
+Revenue & Margin,Segment-3,-,Platform Software and Services Segment,Security,-,North America
+Revenue & Margin,Segment-3 %,-,8.9%,14.3%,-,16.5%
+Revenue & Margin,Others,-,Blue Planet Automation Software and Services Segment,"Collaboration, Observability",-,"Europe, Asia Pacific, Middle East and Africa, India region, Greater China, Latin America"
+Revenue & Margin,Others %,-,1.9%,9.2%,-,42.9%
+Revenue & Margin,Revenue Total ($k),"9,709,900","5,569,150","60,746,000","2,488,400","19,996,000"
+Revenue & Margin,Rev-CoGS / Rev,63.54%,43.05%,64.33%,37.71%,44.12%
+Revenue & Margin,Rev-CoGS-SG&A / Rev,56.33%,27.74%,40.93%,23.42%,29.04%
+Revenue & Margin,Rev-CoGs-SG&A-Other.OpEx / Rev,42.79%,11.18%,23.36%,9.53%,4.10%
+Revenue & Margin,Net Income / Rev,38.32%,7.87%,19.69%,17.68%,3.98%
+EBITDA,Net Income ($k),"3,720,500","438,300","11,958,000","439,900","796,000"
+EBITDA,D & A ($k),"82,100","183,863","2,528,000","254,500","1,064,000"
+EBITDA,Net Interest Expense ($k),"-402,400","29,306","592,000","-19,700","-188,665"
+EBITDA,Tax Provision ($k),"845,600","42,552","2,117,000","-165,800","347,000"
+EBITDA,EBITDA ($k),"4,245,800","694,021","17,195,000","508,900","2,018,335"
+EBITDA,Stock-Based Comp ($k),"467,100","16,533","4,012,000","127,800",0
+EBITDA,Others Adj.,TBD,TBD,TBD,TBD,TBD
+EBITDA,Adj. EBITDA,TBD,TBD,TBD,TBD,TBD
+EBITDA,Covenant EBITDA,TBD,TBD,TBD,TBD,TBD
+Capital Structure,Stock Price,122.78,535.29,89.01,702.73,6.96
+Capital Structure,O/S Shares,"1,257,700,000","141,949,000","3,954,000,000","71,500,000","5,589,599,000"
+Capital Structure,Market Capitalization ($k),"154,420,406","75,983,880","351,945,540","50,245,195","38,877,919"
+Capital Structure,Cash ($k),"2,789,500","1,045,126","7,083,000","2,617,800","4,951,000"
+Capital Structure,Debt ($k),0,"1,575,511","31,303,000","3,313,700","3,325,000"
+Capital Structure,Enterprise Value ($k),"151,630,906","76,514,265","376,165,540","50,941,095","37,251,919"
+Capital Structure,netCommonStockIssuance ($k),"3,700","-160,000","-1,659,000","1,898,200","-9,000"
+Capital Structure,netDebtIssuance ($k),0,"-5,790","-1,710,000","-5,200","-1,093,000"
+Liquidity & Cash Flow,DSO,65.1,71.0,50.6,50.8,109.1
+Liquidity & Cash Flow,DIO,227.9,96.1,64.0,129.8,77.2
+Liquidity & Cash Flow,DPO,58.9,62.2,45.0,73.2,99.4
+Liquidity & Cash Flow,CCC,234.1,104.9,69.6,107.4,86.8
+Liquidity & Cash Flow,OCF ($k),"5,423,700","1,032,771","13,025,000","452,400","1,964,000"
+Liquidity & Cash Flow,CapEx ($k),"-145,600","-200,112","-409,000","-178,600","-591,000"
+Liquidity & Cash Flow,FCF ($k),"5,278,100","832,659","12,616,000","273,800","1,373,000"
+BQR-Mid-Mkt,Total Debt / Equity,0.0x,0.5x,0.6x,1.1x,0.2x
+BQR,Total Debt / Adj Ebitda,0.0x,2.3x,1.8x,6.5x,1.6x
+BQR,Adj Ebitda / Interest Expense,-999.0x,23.7x,29.0x,-999.0x,-999.0x
+BQR,Net Income before extraordinary ($k),"3,720,500","438,300","11,958,000","439,900","796,000"
+BQR,(NCO-CAPEX) / Total Debt,99900.00%,52.85%,40.30%,8.26%,41.29%
+BQR,Score: Operating Leverage,15,42,42,75,35
+BQR,Score: ICR,75,25,25,75,75
+BQR,Score: Net Income,25,35,15,35,35
+BQR,Score: FCF/Debt,15,15,25,58,25
+BQR,BQR,26.5,30.9,28.4,60.8,38.5
