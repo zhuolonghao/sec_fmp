@@ -23,11 +23,18 @@ jobs:
           ref: main
           fetch-depth: 0
 
+      - name: Confirm workflow version
+        run: |
+          echo "Running updated Daily 8-K workflow"
+          echo "Commit SHA: $GITHUB_SHA"
+          git status
+          git log -1 --oneline
+
       - name: Sync with latest main
         run: |
           git fetch origin main
           git checkout main
-          git pull --ff-only origin main
+          git reset --hard origin/main
 
       - name: Set up Python
         uses: actions/setup-python@v5
