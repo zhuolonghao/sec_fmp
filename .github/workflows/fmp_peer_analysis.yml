@@ -11,15 +11,29 @@ on:
         description: 'Comma-separated, non-case-sensitive tickers (target_ticker, peer1, peer2,...)'
         required: true
 
+permissions:
+  contents: write
+
+concurrency:
+  group: ad-hoc-peer-analysis-main
+  cancel-in-progress: false
+
 jobs:
   analyze:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Sync with latest main
+        run: |
+          git fetch origin main
+          git checkout main
+          git pull --ff-only origin main
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -40,18 +54,44 @@ jobs:
       - name: Commit and push changes
         id: commit_step
         run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+
           git add outputs/
-          
-          if ! git diff --staged --quiet; then
-            git commit -m "Ad-hoc Peer Analysis: ${{ github.event.inputs.category }}"
-            git push
-            echo "changes_pushed=true" >> "$GITHUB_OUTPUT"
-          else
+
+          if git diff --staged --quiet; then
             echo "No new analysis to commit."
             echo "changes_pushed=false" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
+
+          git commit -m "Ad-hoc Peer Analysis: ${{ github.event.inputs.category }}"
+
+          for i in 1 2 3; do
+            echo "Push attempt $i..."
+
+            git fetch origin main
+
+            if git rebase origin/main; then
+              echo "Rebase successful."
+            else
+              echo "Rebase failed. Aborting."
+              git rebase --abort || true
+              exit 1
+            fi
+
+            if git push origin HEAD:main; then
+              echo "Push succeeded."
+              echo "changes_pushed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+
+            echo "Push failed, retrying in 5 seconds..."
+            sleep 5
+          done
+
+          echo "Push failed after 3 attempts."
+          exit 1
 
       - name: Send Email Notification
         if: steps.commit_step.outputs.changes_pushed == 'true'
@@ -67,10 +107,10 @@ jobs:
           from: GitHub Actions Tracker
           body: |
             The Ad-Hoc Peer Analysis has finished running.
-            
+
             Details:
             - Category: ${{ github.event.inputs.category }}
             - Tickers Evaluated: ${{ github.event.inputs.tickers }}
-            
+
             You can review the generated outputs in your repository here:
             https://github.com/${{ github.repository }}/commits/main
