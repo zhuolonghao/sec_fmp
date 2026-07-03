@@ -1,0 +1,51 @@
+Category,Metric,NXT,ROCK,SHLS
+Header,Fiscal Period,2026-Q4,2026-Q1,2026-Q1
+Header,Statement Date,2026-03-31,2026-03-31,2026-03-31
+Header,Filing Date,2026-05-19,2026-05-07,2026-05-05
+Revenue & Margin,Segment-1,Reportable Segment,Residential,System Solutions
+Revenue & Margin,Segment-1 %,100.0%,72.6%,78.7%
+Revenue & Margin,Segment-2,-,Agtech,Components
+Revenue & Margin,Segment-2 %,-,19.3%,21.3%
+Revenue & Margin,Segment-3,-,Infrastructure,-
+Revenue & Margin,Segment-3 %,-,8.1%,-
+Revenue & Margin,Others,-,Infrastructure,-
+Revenue & Margin,Others %,-,6.7%,-
+Revenue & Margin,Revenue Total ($k),"3,559,390","1,201,773","535,527"
+Revenue & Margin,Rev-CoGS / Rev,32.39%,25.49%,33.50%
+Revenue & Margin,Rev-CoGS-SG&A / Rev,23.10%,7.72%,12.80%
+Revenue & Margin,Rev-CoGs-SG&A-Other.OpEx / Rev,19.70%,7.72%,11.16%
+Revenue & Margin,Net Income / Rev,16.46%,0.75%,6.27%
+EBITDA,Net Income ($k),"585,883","8,967","33,559"
+EBITDA,D & A ($k),"30,602","36,666","14,786"
+EBITDA,Net Interest Expense ($k),"-3,630","12,099","10,236"
+EBITDA,Tax Provision ($k),"127,943","18,472","12,558"
+EBITDA,EBITDA ($k),"740,798","76,204","71,139"
+EBITDA,Stock-Based Comp ($k),"22,310","5,899","10,558"
+EBITDA,Others Adj.,TBD,TBD,TBD
+EBITDA,Adj. EBITDA,TBD,TBD,TBD
+EBITDA,Covenant EBITDA,TBD,TBD,TBD
+Capital Structure,Stock Price,120.55,39.87,6.58
+Capital Structure,O/S Shares,"148,496,000","29,796,000","167,555,000"
+Capital Structure,Market Capitalization ($k),"17,901,193","1,187,967","1,102,512"
+Capital Structure,Cash ($k),"1,094,976","20,347","1,877"
+Capital Structure,Debt ($k),0,"1,374,199","219,550"
+Capital Structure,Enterprise Value ($k),"16,806,217","2,541,819","1,320,185"
+Capital Structure,netCommonStockIssuance ($k),-395,"-3,857",0
+Capital Structure,netDebtIssuance ($k),0,"1,220,746","45,000"
+Liquidity & Cash Flow,DSO,102.3,58.5,102.0
+Liquidity & Cash Flow,DIO,45.4,64.4,93.8
+Liquidity & Cash Flow,DPO,84.5,54.8,53.4
+Liquidity & Cash Flow,CCC,63.2,68.2,142.4
+Liquidity & Cash Flow,OCF ($k),"560,439","112,150","-39,939"
+Liquidity & Cash Flow,CapEx ($k),"-44,812","-40,696","-37,482"
+Liquidity & Cash Flow,FCF ($k),"515,627","71,454","-77,421"
+BQR-Mid-Mkt,Total Debt / Equity,0.0x,1.6x,0.4x
+BQR,Total Debt / Adj Ebitda,0.0x,18.0x,3.1x
+BQR,Adj Ebitda / Interest Expense,-999.0x,6.3x,6.9x
+BQR,Net Income before extraordinary ($k),"585,883","8,967","33,559"
+BQR,(NCO-CAPEX) / Total Debt,99900.00%,5.20%,-35.26%
+BQR,Score: Operating Leverage,15,75,45
+BQR,Score: ICR,75,48,48
+BQR,Score: Net Income,35,55,48
+BQR,Score: FCF/Debt,15,75,75
+BQR,BQR,29.0,66.0,53.7
