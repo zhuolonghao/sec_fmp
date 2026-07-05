@@ -1,0 +1,51 @@
+Category,Metric,AIT,FAST,GWW,HD,LOW,MSM
+Header,Fiscal Period,2026-Q3,2026-Q1,2026-Q1,2026-Q1,2026-Q1,2026-Q3
+Header,Statement Date,2026-03-31,2026-03-31,2026-03-31,2026-05-31,2026-05-31,2026-05-31
+Header,Filing Date,2026-04-28,2026-04-16,2026-05-07,2026-05-27,2026-05-28,2026-07-01
+Revenue & Margin,Segment-1,Engineered Solutions Segment,-,High-Touch Solutions (N.A.),Appliances,Home Decor,Reportable Segment
+Revenue & Margin,Segment-1 %,100.0%,-,79.4%,8.9%,37.5%,100.0%
+Revenue & Margin,Segment-2,Engineered Solutions Segment,-,Endless Assortment,Power,Building Products,-
+Revenue & Margin,Segment-2 %,31.8%,-,20.6%,8.4%,31.6%,-
+Revenue & Margin,Segment-3,-,-,-,Other Segment,Hardlines,-
+Revenue & Margin,Segment-3 %,-,-,-,8.1%,28.8%,-
+Revenue & Margin,Others,-,-,-,"Plumbing, Building Materials, Lumber, Paint, Outdoor Garden, Indoor Garden, Hardware, Flooring, Millwork, Electrical/Lighting, Bath, Storage & Organization, Lighting",Other Sales,-
+Revenue & Margin,Others %,-,-,-,74.6%,2.2%,-
+Revenue & Margin,Revenue Total ($k),"4,838,729","8,442,700","18,378,000","166,592,000","88,434,000","3,908,716"
+Revenue & Margin,Rev-CoGS / Rev,30.04%,44.89%,39.15%,33.13%,33.80%,40.82%
+Revenue & Margin,Rev-CoGS-SG&A / Rev,11.20%,20.25%,14.23%,14.44%,14.38%,9.50%
+Revenue & Margin,Rev-CoGs-SG&A-Other.OpEx / Rev,11.20%,20.25%,14.23%,12.45%,11.55%,8.80%
+Revenue & Margin,Net Income / Rev,8.34%,15.39%,9.70%,8.41%,7.51%,5.90%
+EBITDA,Net Income ($k),"403,761","1,299,700","1,782,000","14,012,000","6,641,000","230,544"
+EBITDA,D & A ($k),"66,347","179,200","255,000","4,208,000","2,331,000","97,370"
+EBITDA,Net Interest Expense ($k),"12,811","-2,300","81,000","2,298,000","1,466,000","21,368"
+EBITDA,Tax Provision ($k),"117,768","410,500","659,000","4,425,000","2,104,000","75,820"
+EBITDA,EBITDA ($k),"600,687","1,887,100","2,777,000","24,943,000","12,542,000","425,102"
+EBITDA,Stock-Based Comp ($k),"6,879","8,800","66,000","530,000","254,000","9,328"
+EBITDA,Others Adj.,TBD,TBD,TBD,TBD,TBD,TBD
+EBITDA,Adj. EBITDA,TBD,TBD,TBD,TBD,TBD,TBD
+EBITDA,Covenant EBITDA,TBD,TBD,TBD,TBD,TBD,TBD
+Capital Structure,Stock Price,265.32,46.40,"1,090.81",312.42,233.33,109.47
+Capital Structure,O/S Shares,"37,527,000","1,148,200,000","47,300,000","994,000,000","559,000,000","55,838,000"
+Capital Structure,Market Capitalization ($k),"9,956,664","53,276,480","51,595,313","310,545,480","130,431,470","6,112,586"
+Capital Structure,Cash ($k),"171,576","308,600","695,000","1,601,000","786,000","74,094"
+Capital Structure,Debt ($k),"365,300","445,500","2,781,000","57,975,000","42,540,000","555,924"
+Capital Structure,Enterprise Value ($k),"10,150,388","53,413,380","53,681,313","366,919,480","172,185,470","6,594,416"
+Capital Structure,netCommonStockIssuance ($k),"-92,978","-12,700","-231,000","33,000","-361,000",710
+Capital Structure,netDebtIssuance ($k),"-207,000",0,"-76,000","-2,320,000","-1,998,000","-6,134"
+Liquidity & Cash Flow,DSO,57.5,58.0,48.8,13.6,3.6,38.3
+Liquidity & Cash Flow,DIO,56.1,135.1,76.8,85.3,108.0,105.2
+Liquidity & Cash Flow,DPO,30.1,26.4,36.8,42.7,64.7,35.4
+Liquidity & Cash Flow,CCC,83.5,166.7,88.8,56.2,46.9,108.1
+Liquidity & Cash Flow,OCF ($k),"464,523","1,412,000","2,108,000","18,032,000","9,835,000","305,791"
+Liquidity & Cash Flow,CapEx ($k),"-27,204","-248,500","-729,000","-3,717,000","-2,216,000","-85,861"
+Liquidity & Cash Flow,FCF ($k),"437,319","1,163,500","1,379,000","14,315,000","7,619,000","219,930"
+BQR-Mid-Mkt,Total Debt / Equity,0.2x,0.1x,0.7x,4.2x,999.0x,0.4x
+BQR,Total Debt / Adj Ebitda,0.6x,0.2x,1.0x,2.3x,3.4x,1.3x
+BQR,Adj Ebitda / Interest Expense,46.9x,-999.0x,34.3x,10.9x,8.6x,19.9x
+BQR,Net Income before extraordinary ($k),"403,761","1,299,700","1,782,000","14,012,000","6,641,000","230,544"
+BQR,(NCO-CAPEX) / Total Debt,119.72%,261.17%,49.59%,24.69%,17.91%,39.56%
+BQR,Score: Operating Leverage,25,15,35,42,48,35
+BQR,Score: ICR,15,75,15,42,45,25
+BQR,Score: Net Income,35,25,25,15,15,35
+BQR,Score: FCF/Debt,15,15,25,42,48,35
+BQR,BQR,23.5,26.5,27.0,35.2,39.3,33.5
