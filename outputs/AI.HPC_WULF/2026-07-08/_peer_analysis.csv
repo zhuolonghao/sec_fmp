@@ -1,0 +1,51 @@
+Category,Metric,CIFR,CORZ,HUT,IREN,WULF
+Header,Fiscal Period,2026-Q1,2026-Q1,2026-Q1,2026-Q3,2026-Q1
+Header,Statement Date,2026-03-31,2026-03-31,2026-03-31,2026-03-31,2026-03-31
+Header,Filing Date,2026-03-25,2026-05-06,2026-05-06,2026-05-08,2026-05-08
+Revenue & Margin,Segment-1,Bitcoin Mining,Equipment Sales,"High Performance Computing, Colocation And Cloud",AUSTRALIA,Data Center Hosting
+Revenue & Margin,Segment-1 %,100.0%,81.7%,86.1%,96.7%,100.0%
+Revenue & Margin,Segment-2,-,Hosting Service,Power,CANADA,-
+Revenue & Margin,Segment-2 %,-,18.3%,9.9%,3.3%,-
+Revenue & Margin,Segment-3,-,"Hosting Service, Customers",Digital Infrastructure,-,-
+Revenue & Margin,Segment-3 %,-,14.8%,4.1%,-,-
+Revenue & Margin,Others,-,"Equipment Sales, Related Parties, Equipment Sales, Hosting Service, Related Parties, Equipment Sales, Customers","Service, Other",-,-
+Revenue & Margin,Others %,-,20.5%,5.0%,-,-
+Revenue & Margin,Revenue Total ($k),"209,821","354,738","-40,963","757,074","168,062"
+Revenue & Margin,Rev-CoGS / Rev,3.31%,16.75%,379.92%,53.58%,64.02%
+Revenue & Margin,Rev-CoGS-SG&A / Rev,-15.36%,-43.78%,827.85%,10.07%,-70.08%
+Revenue & Margin,Rev-CoGs-SG&A-Other.OpEx / Rev,-171.78%,-28.89%,602.02%,-29.24%,-147.04%
+Revenue & Margin,Net Income / Rev,-427.79%,-342.93%,761.93%,10.16%,-611.46%
+EBITDA,Net Income ($k),"-897,585","-1,216,497","-312,109","76,923","-1,027,632"
+EBITDA,D & A ($k),"176,390","66,323","128,126","309,507","108,906"
+EBITDA,Net Interest Expense ($k),"44,061","3,767","31,847","-11,620","109,765"
+EBITDA,Tax Provision ($k),"-3,050",978,"-80,573",-850,104
+EBITDA,EBITDA ($k),"-680,184","-1,145,429","-232,709","373,960","-808,857"
+EBITDA,Stock-Based Comp ($k),"70,703","99,812","104,883","130,636","74,979"
+EBITDA,Others Adj.,TBD,TBD,TBD,TBD,TBD
+EBITDA,Adj. EBITDA,TBD,TBD,TBD,TBD,TBD
+EBITDA,Covenant EBITDA,TBD,TBD,TBD,TBD,TBD
+Capital Structure,Stock Price,14.89,14.96,46.91,34.28,14.43
+Capital Structure,O/S Shares,"405,112,315","322,911,000","111,064,728","216,623,384","422,999,671"
+Capital Structure,Market Capitalization ($k),"6,032,122","4,830,749","5,210,046","7,425,850","6,103,885"
+Capital Structure,Cash ($k),"3,727,077","1,005,148","160,016","2,213,274","2,826,277"
+Capital Structure,Debt ($k),"4,746,687","2,055,595","422,911","3,964,913","5,314,067"
+Capital Structure,Enterprise Value ($k),"7,051,732","5,881,196","5,472,941","9,177,489","8,591,675"
+Capital Structure,netCommonStockIssuance ($k),"-3,781",81,"230,670","346,278","12,939"
+Capital Structure,netDebtIssuance ($k),"1,968,159","993,023","-29,713","39,287","92,750"
+Liquidity & Cash Flow,DSO,5.2,232.4,-173.9,26.8,15.1
+Liquidity & Cash Flow,DIO,106.8,0.0,0.0,0.0,0.0
+Liquidity & Cash Flow,DPO,119.3,238.5,0.0,125.2,594.3
+Liquidity & Cash Flow,CCC,-7.3,-6.1,-173.9,-98.4,-579.2
+Liquidity & Cash Flow,OCF ($k),"-69,169","568,726","-132,599","533,309","-197,258"
+Liquidity & Cash Flow,CapEx ($k),"-947,110","-1,029,859","-190,209","-2,236,881","-780,779"
+Liquidity & Cash Flow,FCF ($k),"-929,713","-471,202","-814,385","-1,807,010","-1,686,714"
+BQR-Mid-Mkt,Total Debt / Equity,6.6x,999.0x,0.3x,1.5x,999.0x
+BQR,Total Debt / Adj Ebitda,999.0x,999.0x,999.0x,10.6x,999.0x
+BQR,Adj Ebitda / Interest Expense,-999.0x,-999.0x,-999.0x,-999.0x,-999.0x
+BQR,Net Income before extraordinary ($k),"-897,585","-1,216,497","-312,109","76,923","-1,027,632"
+BQR,(NCO-CAPEX) / Total Debt,-19.59%,-22.92%,-192.57%,-45.58%,-31.74%
+BQR,Score: Operating Leverage,75,75,75,75,75
+BQR,Score: ICR,75,75,75,75,75
+BQR,Score: Net Income,75,75,75,42,75
+BQR,Score: FCF/Debt,75,75,75,75,75
+BQR,BQR,75.0,75.0,75.0,66.8,75.0
