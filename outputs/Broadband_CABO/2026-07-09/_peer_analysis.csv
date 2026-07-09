@@ -1,0 +1,51 @@
+Category,Metric,CABO
+Header,Fiscal Period,2026-Q1
+Header,Statement Date,2026-03-31
+Header,Filing Date,2026-04-30
+Revenue & Margin,Segment-1,"Product and Service, Other"
+Revenue & Margin,Segment-1 %,59.7%
+Revenue & Margin,Segment-2,"Business Services, Other"
+Revenue & Margin,Segment-2 %,40.3%
+Revenue & Margin,Segment-3,Fees Imposed by Various Governmental Authorities Passed Through to Customer
+Revenue & Margin,Segment-3 %,12.3%
+Revenue & Margin,Others,"Product and Service, Other, Voice, Fees Imposed by Various Governmental Authorities Passed Through to Customer"
+Revenue & Margin,Others %,9.6%
+Revenue & Margin,Revenue Total ($k),"1,473,780"
+Revenue & Margin,Rev-CoGS / Rev,51.03%
+Revenue & Margin,Rev-CoGS-SG&A / Rev,26.17%
+Revenue & Margin,Rev-CoGs-SG&A-Other.OpEx / Rev,26.28%
+Revenue & Margin,Net Income / Rev,-21.94%
+EBITDA,Net Income ($k),"-323,292"
+EBITDA,D & A ($k),"335,578"
+EBITDA,Net Interest Expense ($k),"139,383"
+EBITDA,Tax Provision ($k),"-68,643"
+EBITDA,EBITDA ($k),"83,026"
+EBITDA,Stock-Based Comp ($k),"27,551"
+EBITDA,Others Adj.,TBD
+EBITDA,Adj. EBITDA,TBD
+EBITDA,Covenant EBITDA,TBD
+Capital Structure,Stock Price,91.21
+Capital Structure,O/S Shares,"5,685,897"
+Capital Structure,Market Capitalization ($k),"518,611"
+Capital Structure,Cash ($k),"165,601"
+Capital Structure,Debt ($k),"3,113,352"
+Capital Structure,Enterprise Value ($k),"3,466,362"
+Capital Structure,netCommonStockIssuance ($k),0
+Capital Structure,netDebtIssuance ($k),"-80,531"
+Liquidity & Cash Flow,DSO,14.0
+Liquidity & Cash Flow,DIO,0.0
+Liquidity & Cash Flow,DPO,15.8
+Liquidity & Cash Flow,CCC,-1.8
+Liquidity & Cash Flow,OCF ($k),"-20,803"
+Liquidity & Cash Flow,CapEx ($k),"-145,797"
+Liquidity & Cash Flow,FCF ($k),"-166,600"
+BQR-Mid-Mkt,Total Debt / Equity,2.1x
+BQR,Total Debt / Adj Ebitda,37.5x
+BQR,Adj Ebitda / Interest Expense,0.6x
+BQR,Net Income before extraordinary ($k),"-323,292"
+BQR,(NCO-CAPEX) / Total Debt,-5.35%
+BQR,Score: Operating Leverage,75
+BQR,Score: ICR,75
+BQR,Score: Net Income,75
+BQR,Score: FCF/Debt,75
+BQR,BQR,75.0
