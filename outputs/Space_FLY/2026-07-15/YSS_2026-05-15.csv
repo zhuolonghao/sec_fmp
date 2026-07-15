@@ -1,0 +1,51 @@
+Category,Metric,LTM (Current),LTM (-1Q)
+Header,Fiscal Period,2026-Q1,2025-Q4
+Header,Statement Date,2026-03-31,2025-12-31
+Header,Filing Date,2026-05-15,2025-12-31
+Revenue & Margin,Segment-1,-,-
+Revenue & Margin,Segment-1 %,-,-
+Revenue & Margin,Segment-2,-,-
+Revenue & Margin,Segment-2 %,-,-
+Revenue & Margin,Segment-3,-,-
+Revenue & Margin,Segment-3 %,-,-
+Revenue & Margin,Others,-,-
+Revenue & Margin,Others %,-,-
+Revenue & Margin,Revenue Total ($k),"327,944","288,207"
+Revenue & Margin,Rev-CoGS / Rev,20.68%,21.28%
+Revenue & Margin,Rev-CoGS-SG&A / Rev,-31.08%,-5.04%
+Revenue & Margin,Rev-CoGs-SG&A-Other.OpEx / Rev,-35.43%,-9.88%
+Revenue & Margin,Net Income / Rev,-47.28%,-22.72%
+EBITDA,Net Income ($k),"-155,064","-65,490"
+EBITDA,D & A ($k),"41,868","37,862"
+EBITDA,Net Interest Expense ($k),"8,085","16,931"
+EBITDA,Tax Provision ($k),"4,024","2,297"
+EBITDA,EBITDA ($k),"-101,087","-8,400"
+EBITDA,Stock-Based Comp ($k),0,0
+EBITDA,Others Adj.,TBD,TBD
+EBITDA,Adj. EBITDA,TBD,TBD
+EBITDA,Covenant EBITDA,TBD,TBD
+Capital Structure,Stock Price,22.17,33.61
+Capital Structure,O/S Shares,"127,609,213","127,609,215"
+Capital Structure,Market Capitalization ($k),"2,829,096","4,288,946"
+Capital Structure,Cash ($k),"655,693","162,573"
+Capital Structure,Debt ($k),"178,376","175,133"
+Capital Structure,Enterprise Value ($k),"2,351,779","4,301,506"
+Capital Structure,netCommonStockIssuance ($k),"589,641",0
+Capital Structure,netDebtIssuance ($k),-938,0
+Liquidity & Cash Flow,DSO,71.4,57.0
+Liquidity & Cash Flow,DIO,26.6,30.6
+Liquidity & Cash Flow,DPO,71.2,51.8
+Liquidity & Cash Flow,CCC,26.8,35.8
+Liquidity & Cash Flow,OCF ($k),"-163,951","-11,988"
+Liquidity & Cash Flow,CapEx ($k),"-3,321","-5,492"
+Liquidity & Cash Flow,FCF ($k),"-167,272","-17,480"
+BQR-Mid-Mkt,Total Debt / Equity,0.1x,0.2x
+BQR,Total Debt / Adj Ebitda,999.0x,999.0x
+BQR,Adj Ebitda / Interest Expense,-999.0x,-999.0x
+BQR,Net Income before extraordinary ($k),"-155,064","-65,490"
+BQR,(NCO-CAPEX) / Total Debt,-93.77%,-9.98%
+BQR,Score: Operating Leverage,75,75
+BQR,Score: ICR,75,75
+BQR,Score: Net Income,75,75
+BQR,Score: FCF/Debt,75,75
+BQR,BQR,75.0,75.0
