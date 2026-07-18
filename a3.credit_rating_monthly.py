@@ -79,7 +79,7 @@ from zscore_stats import (
 )
 
 config = ZScoreConfig(
-    anchor_date=env_category,
+    anchor_date=env_anchor_date,
     volatility_returns=252,
     horizon=20,
     thresholds=(1.5, 2.0, 2.5),
