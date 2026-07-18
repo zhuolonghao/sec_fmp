@@ -20,6 +20,10 @@ pd.set_option('display.expand_frame_repr', False)
 # --- Handle Inputs: Cloud UI ---
 env_tickers = os.environ.get("TARGET_TICKERS")
 env_anchor_date = os.environ.get("TARGET_ANCHOR_DATE")
+env_anchor_date = pd.to_datetime(
+        value,
+        errors="coerce",
+    )
 
 # Exit early if inputs are null, empty, or just whitespace
 if not env_tickers or not env_tickers.strip():
