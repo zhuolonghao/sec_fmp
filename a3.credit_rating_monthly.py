@@ -61,12 +61,16 @@ for symbol in np.unique(tickers):
     if price_data:
         price = pd.DataFrame(price_data)
         all_tickers_price.append(price)
+        print(all_tickers_price.head(3))
+
         
 # --- Combine and Export ---
 if all_tickers_price:
     price_df = pd.concat(all_tickers_price, axis=0, ignore_index=False)
     price_file = os.path.join(output_dir, "_price.xlsx")
     price_df.to_excel(price_file, index=False)
+    print(price_df.head(3))
+
     
 # ------------------------------------------------------------------
 # 2. Calculate Z-Scores and Decline Triggers
@@ -145,15 +149,16 @@ output_df = (
     .sort_values(['symbol', 'date'])
     .reset_index(drop=True)
 )
-if output_df.empty:
-    print("output_df is empty")
+print(output_df.head(3))
+
 # ------------------------------------------------------------------
 # 3. Save to CSV
 # ------------------------------------------------------------------
-print(f"\n--- Writing to BQR folder --- {np.unique(tickers)}")
+print(f"\n--- Writing to BQR folder --- {np.unique(tickers)} vs {output_df['symbol'].unique()}")
 
 for symbol in np.unique(tickers):
     symbol_df = output_df[output_df['symbol'] == symbol]
+    print(symbol_df.head(3))
     if not symbol_df.empty:
         symbol_file = os.path.join(output_dir, f"{symbol}.csv")
         symbol_df.to_csv(symbol_file, index=False)
