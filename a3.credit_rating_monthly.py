@@ -23,7 +23,7 @@ env_anchor_date = os.environ.get("TARGET_ANCHOR_DATE")
 env_anchor_date = pd.to_datetime(
         env_anchor_date,
         errors="coerce",
-    )
+    ).dt.strftime('%Y-%m-%d')
 print(f"env_anchor_date: {env_anchor_date}")
 
 # Exit early if inputs are null, empty, or just whitespace
