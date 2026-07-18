@@ -24,6 +24,7 @@ env_anchor_date = pd.to_datetime(
         env_anchor_date,
         errors="coerce",
     )
+print(f"env_anchor_date: {env_anchor_date}")
 
 # Exit early if inputs are null, empty, or just whitespace
 if not env_tickers or not env_tickers.strip():
