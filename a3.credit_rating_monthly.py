@@ -21,7 +21,7 @@ pd.set_option('display.expand_frame_repr', False)
 env_tickers = os.environ.get("TARGET_TICKERS")
 env_anchor_date = os.environ.get("TARGET_ANCHOR_DATE")
 env_anchor_date = pd.to_datetime(
-        value,
+        env_anchor_date,
         errors="coerce",
     )
 
