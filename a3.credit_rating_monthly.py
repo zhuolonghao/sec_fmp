@@ -86,6 +86,15 @@ config = ZScoreConfig(
     decline_thresholds=(0.10, 0.15, 0.20),
 )
 
+
+print("anchor_date raw:", repr(config.anchor_date))
+print("anchor_date type:", type(config.anchor_date))
+print(
+    "anchor_date parsed:",
+    pd.to_datetime(config.anchor_date, errors="coerce"),
+)
+
+
 z_df, error_df = calculate_all_z_statistics(
     price_df=price_df,
     config=config,
