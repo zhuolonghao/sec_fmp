@@ -44,7 +44,7 @@ ticker_list = [env_anchor_date, clean_tickers]
 # Unpack the list directly instead of looping
 category, tickers = ticker_list
 
-base_dir = Path("bqr") / f"{category}_{tickers[0]}"
+base_dir = Path("bqr") / f"{env_anchor_date}_{tickers[0]}"
 output_dir = base_dir 
 output_dir.mkdir(parents=True, exist_ok=True)
 
