@@ -61,8 +61,6 @@ for symbol in np.unique(tickers):
     if price_data:
         price = pd.DataFrame(price_data)
         all_tickers_price.append(price)
-        print(all_tickers_price.head(3))
-
         
 # --- Combine and Export ---
 if all_tickers_price:
