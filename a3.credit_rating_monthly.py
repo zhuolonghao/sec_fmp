@@ -72,6 +72,8 @@ if all_tickers_price:
 # ------------------------------------------------------------------
 # 2. Calculate Z-Scores and Decline Triggers
 # ------------------------------------------------------------------
+print(f"\n--- Calculating Z-scores and Decline Trigger ---")
+
 from zscore_stats import (
     ZScoreConfig,
     calculate_all_z_statistics,
@@ -148,6 +150,8 @@ output_df = (
 # ------------------------------------------------------------------
 # 3. Save to CSV
 # ------------------------------------------------------------------
+print(f"\n--- Writing to BQR folder ---")
+
 for symbol in np.unique(tickers):
     symbol_df = output_df[output_df['symbol'] == symbol]
     if not symbol_df.empty:
