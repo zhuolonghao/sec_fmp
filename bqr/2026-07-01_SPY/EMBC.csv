@@ -1,0 +1,12 @@
+symbol,anchor date,anchor close,sigma (%),date,open,low,close,ret_itd (%),px dd10,trig dd10,px dd15,trig dd15,px dd20,trig dd20,px z1.5,trig z1.5,px z2.0,trig z2.0,px z2.5,trig z2.5
+EMBC,2026-07-01,3.36,2.32,2026-07-02,3.42,3.31,3.35,-0.3,3.02,False,2.86,False,2.69,False,2.84,False,2.7,False,2.56,False
+EMBC,2026-07-01,3.36,2.32,2026-07-06,3.38,3.23,3.28,-2.38,3.02,False,2.86,False,2.69,False,2.92,False,2.77,False,2.63,False
+EMBC,2026-07-01,3.36,2.32,2026-07-07,3.34,3.3,3.37,0.3,3.02,False,2.86,False,2.69,False,2.89,False,2.75,False,2.61,False
+EMBC,2026-07-01,3.36,2.32,2026-07-08,3.32,3.18,3.19,-5.06,3.02,False,2.86,False,2.69,False,2.86,False,2.71,False,2.58,False
+EMBC,2026-07-01,3.36,2.32,2026-07-09,3.15,3.12,3.18,-5.36,3.02,False,2.86,False,2.69,False,2.83,False,2.69,False,2.55,False
+EMBC,2026-07-01,3.36,2.32,2026-07-10,3.18,3.15,3.24,-3.57,3.02,False,2.86,False,2.69,False,2.75,False,2.61,False,2.48,False
+EMBC,2026-07-01,3.36,2.32,2026-07-13,3.2,3.14,3.21,-4.46,3.02,False,2.86,False,2.69,False,2.64,False,2.5,False,2.38,False
+EMBC,2026-07-01,3.36,2.32,2026-07-14,3.2,3.07,3.1,-7.74,3.02,False,2.86,False,2.69,False,2.65,False,2.52,False,2.39,False
+EMBC,2026-07-01,3.36,2.32,2026-07-15,3.1,3.1,3.22,-4.17,3.02,False,2.86,False,2.69,False,2.68,False,2.54,False,2.41,False
+EMBC,2026-07-01,3.36,2.32,2026-07-16,3.22,3.22,3.35,-0.3,3.02,False,2.86,False,2.69,False,2.64,False,2.51,False,2.38,False
+EMBC,2026-07-01,3.36,2.32,2026-07-17,3.32,3.25,3.25,-3.27,3.02,False,2.86,False,2.69,False,2.64,False,2.51,False,2.38,False
