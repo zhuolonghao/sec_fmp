@@ -20,6 +20,8 @@ pd.set_option('display.expand_frame_repr', False)
 # --- Handle Inputs: Cloud UI ---
 env_tickers = os.environ.get("TARGET_TICKERS")
 env_anchor_date = os.environ.get("TARGET_ANCHOR_DATE")
+env_anchor_date = pd.to_datetime(env_anchor_date, errors="coerce").strftime('%Y-%m-%d')
+print(f"env_anchor_date: {env_anchor_date}")
 
 # Exit early if inputs are null, empty, or just whitespace
 if not env_tickers or not env_tickers.strip():
@@ -40,8 +42,7 @@ ticker_list = [env_anchor_date, clean_tickers]
 # Unpack the list directly instead of looping
 category, tickers = ticker_list
 
-base_dir = Path("bqr") / f"{category}_{tickers[0]}"
-output_dir = base_dir 
+output_dir = Path("bqr") / f"{env_anchor_date}_{tickers[0]}"
 output_dir.mkdir(parents=True, exist_ok=True)
 
 
@@ -63,11 +64,16 @@ for symbol in np.unique(tickers):
 # --- Combine and Export ---
 if all_tickers_price:
     price_df = pd.concat(all_tickers_price, axis=0, ignore_index=False)
-    
+    price_file = os.path.join(output_dir, "_price.xlsx")
+    price_df.to_excel(price_file, index=False)
+    print(f"Saved {price_file}")
+
     
 # ------------------------------------------------------------------
 # 2. Calculate Z-Scores and Decline Triggers
 # ------------------------------------------------------------------
+print(f"\n--- Calculating Z-scores and Decline Trigger ---")
+
 from zscore_stats import (
     ZScoreConfig,
     calculate_all_z_statistics,
@@ -144,8 +150,14 @@ output_df = (
 # ------------------------------------------------------------------
 # 3. Save to CSV
 # ------------------------------------------------------------------
+print(f"\n--- Writing to BQR folder ---")
+
 for symbol in np.unique(tickers):
     symbol_df = output_df[output_df['symbol'] == symbol]
     if not symbol_df.empty:
         symbol_file = os.path.join(output_dir, f"{symbol}.csv")
         symbol_df.to_csv(symbol_file, index=False)
+        print(f"Saved {symbol_file}")
+    else:
+        print(f"\n--- Fail to write {symbol} to csv---")
+

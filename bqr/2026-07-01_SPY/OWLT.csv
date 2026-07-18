@@ -1,0 +1,12 @@
+symbol,anchor date,anchor close,sigma (%),date,open,low,close,ret_itd (%),px dd10,trig dd10,px dd15,trig dd15,px dd20,trig dd20,px z1.5,trig z1.5,px z2.0,trig z2.0,px z2.5,trig z2.5
+OWLT,2026-07-01,6.16,4.3,2026-07-02,6.16,5.7,5.76,-6.49,5.54,False,5.24,False,4.93,False,3.71,False,3.37,False,3.06,False
+OWLT,2026-07-01,6.16,4.3,2026-07-06,5.76,5.67,5.91,-4.06,5.54,False,5.24,False,4.93,False,3.83,False,3.48,False,3.16,False
+OWLT,2026-07-01,6.16,4.3,2026-07-07,5.85,5.51,5.63,-8.6,5.54,True,5.24,False,4.93,False,3.5,False,3.18,False,2.89,False
+OWLT,2026-07-01,6.16,4.3,2026-07-08,5.58,5.27,5.5,-10.71,5.54,True,5.24,False,4.93,False,3.59,False,3.26,False,2.96,False
+OWLT,2026-07-01,6.16,4.3,2026-07-09,5.58,5.55,5.91,-4.06,5.54,False,5.24,False,4.93,False,3.52,False,3.2,False,2.9,False
+OWLT,2026-07-01,6.16,4.3,2026-07-10,5.93,5.9,6.09,-1.14,5.54,False,5.24,False,4.93,False,3.44,False,3.12,False,2.84,False
+OWLT,2026-07-01,6.16,4.3,2026-07-13,6.04,5.9,6.4,3.9,5.54,False,5.24,False,4.93,False,3.44,False,3.12,False,2.84,False
+OWLT,2026-07-01,6.16,4.3,2026-07-14,6.5,6.27,6.38,3.57,5.54,False,5.24,False,4.93,False,3.48,False,3.16,False,2.87,False
+OWLT,2026-07-01,6.16,4.3,2026-07-15,6.5,6.0,6.13,-0.49,5.54,False,5.24,False,4.93,False,3.49,False,3.17,False,2.88,False
+OWLT,2026-07-01,6.16,4.3,2026-07-16,6.12,5.71,5.79,-6.01,5.54,False,5.24,False,4.93,False,3.33,False,3.02,False,2.74,False
+OWLT,2026-07-01,6.16,4.3,2026-07-17,5.64,5.51,5.6,-9.09,5.54,True,5.24,False,4.93,False,3.49,False,3.17,False,2.88,False

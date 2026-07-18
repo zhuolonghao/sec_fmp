@@ -1,0 +1,12 @@
+symbol,anchor date,anchor close,sigma (%),date,open,low,close,ret_itd (%),px dd10,trig dd10,px dd15,trig dd15,px dd20,trig dd20,px z1.5,trig z1.5,px z2.0,trig z2.0,px z2.5,trig z2.5
+GTN,2026-07-01,3.99,2.98,2026-07-02,4.04,3.93,4.11,3.01,3.59,False,3.39,False,3.19,False,3.15,False,2.95,False,2.76,False
+GTN,2026-07-01,3.99,2.98,2026-07-06,4.08,3.97,4.01,0.5,3.59,False,3.39,False,3.19,False,3.3,False,3.09,False,2.89,False
+GTN,2026-07-01,3.99,2.98,2026-07-07,4.09,3.9,3.9,-2.26,3.59,False,3.39,False,3.19,False,3.28,False,3.07,False,2.87,False
+GTN,2026-07-01,3.99,2.98,2026-07-08,3.86,3.7,3.77,-5.51,3.59,False,3.39,False,3.19,False,3.27,False,3.06,False,2.86,False
+GTN,2026-07-01,3.99,2.98,2026-07-09,3.73,3.68,3.77,-5.51,3.59,False,3.39,False,3.19,False,3.33,False,3.12,False,2.92,False
+GTN,2026-07-01,3.99,2.98,2026-07-10,3.83,3.74,3.78,-5.26,3.59,False,3.39,False,3.19,False,3.31,False,3.09,False,2.89,False
+GTN,2026-07-01,3.99,2.98,2026-07-13,3.82,3.82,3.9,-2.26,3.59,False,3.39,False,3.19,False,3.32,False,3.11,False,2.91,False
+GTN,2026-07-01,3.99,2.98,2026-07-14,3.86,3.8,3.81,-4.51,3.59,False,3.39,False,3.19,False,3.21,False,3.0,False,2.81,False
+GTN,2026-07-01,3.99,2.98,2026-07-15,3.81,3.81,4.06,1.75,3.59,False,3.39,False,3.19,False,3.11,False,2.91,False,2.72,False
+GTN,2026-07-01,3.99,2.98,2026-07-16,4.12,4.0,4.04,1.25,3.59,False,3.39,False,3.19,False,3.19,False,2.99,False,2.79,False
+GTN,2026-07-01,3.99,2.98,2026-07-17,4.06,3.91,3.96,-0.75,3.59,False,3.39,False,3.19,False,3.05,False,2.86,False,2.67,False
