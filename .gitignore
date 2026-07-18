@@ -5,6 +5,7 @@ token.json
 token.txt
 secrets.json
 config.json
+beta.ipynb
 
 # Python bytecode
 __pycache__/

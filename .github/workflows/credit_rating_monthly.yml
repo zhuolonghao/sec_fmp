@@ -1,0 +1,116 @@
+name: Ad-Hoc Credit Rating Analysis
+
+on:
+  workflow_dispatch:
+    inputs:
+      category:
+        description: 'Anchor Date'
+        required: true
+        default: '2026-07-01'
+      tickers:
+        description: 'Tickers (SPY, qqq, wulf,...)'
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ad-hoc-credit-rating-main
+  cancel-in-progress: false
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Sync with latest main
+        run: |
+          git fetch origin main
+          git checkout main
+          git pull --ff-only origin main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Credit Rating Analysis Script
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+          TARGET_ANCHOR_DATE: ${{ github.event.inputs.date }}
+          TARGET_TICKERS: ${{ github.event.inputs.tickers }}
+        run: python a3.credit_rating_monthly.py
+
+      - name: Commit and push changes
+        id: commit_step
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+
+          git add outputs/
+
+          if git diff --staged --quiet; then
+            echo "No new analysis to commit."
+            echo "changes_pushed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git commit -m "Ad-hoc Credit Rating Monthly Analysis: ${{ github.event.inputs.date }}"
+
+          for i in 1 2 3; do
+            echo "Push attempt $i..."
+
+            git fetch origin main
+
+            if git rebase origin/main; then
+              echo "Rebase successful."
+            else
+              echo "Rebase failed. Aborting."
+              git rebase --abort || true
+              exit 1
+            fi
+
+            if git push origin HEAD:main; then
+              echo "Push succeeded."
+              echo "changes_pushed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+
+            echo "Push failed, retrying in 5 seconds..."
+            sleep 5
+          done
+
+          echo "Push failed after 3 attempts."
+          exit 1
+
+      - name: Send Email Notification
+        if: steps.commit_step.outputs.changes_pushed == 'true'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "Credit Rating Monthly Analysis Complete: ${{ github.event.inputs.date }}"
+          to: longhao.zhuo@gmail.com
+          from: GitHub Actions Tracker
+          body: |
+            The Ad-Hoc Credit Rating Monthly Analysis has finished running.
+
+            Details:
+            - Anchor Date: ${{ github.event.inputs.date }}
+            - Tickers Evaluated: ${{ github.event.inputs.tickers }}
+
+            You can review the generated outputs in your repository here:
+            https://github.com/${{ github.repository }}/commits/main

@@ -5,7 +5,6 @@ import os
 import ast
 from datetime import datetime, timedelta
 from pandas.tseries.offsets import MonthEnd
-from zoneinfo import ZoneInfo
 
 class FMPClient:
     """
@@ -21,7 +20,7 @@ class FMPClient:
         Fetches data with built-in error handling.
         """
         # Calculate date range for past 6 months
-        to_date = datetime.now(ZoneInfo("America/New_York")).strftime('%Y-%m-%d')
+        to_date = datetime.now().strftime('%Y-%m-%d')
         yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
         from_date = (datetime.now() - timedelta(days=365*3)).strftime('%Y-%m-%d')
         from_date_1y = (datetime.now() - timedelta(days=180)).strftime('%Y-%m-%d')
@@ -39,7 +38,7 @@ class FMPClient:
         else:
             url = f"{self.base_url}/{endpoint}?symbol={symbol}&period=quarter&limit=20&apikey={self.api_key}"
         try:
-            print(f"   Fetching {endpoint} for {symbol}... on {to_date}")
+            print(f"   Fetching {endpoint} for {symbol}...")
             response = requests.get(url)
             response.raise_for_status()
             data = response.json()
