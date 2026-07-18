@@ -3,7 +3,7 @@ name: Ad-Hoc Credit Rating Analysis
 on:
   workflow_dispatch:
     inputs:
-      category:
+      date:
         description: 'Anchor Date'
         required: true
         default: '2026-07-01'
