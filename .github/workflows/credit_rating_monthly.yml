@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       date:
-        description: 'Anchor Date'
+        description: 'Anchor Date (2026-07-01)'
         required: true
       tickers:
         description: 'Tickers (SPY, qqq, wulf,...)'
