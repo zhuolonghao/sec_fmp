@@ -6,7 +6,6 @@ on:
       date:
         description: 'Anchor Date'
         required: true
-        default: '2026-07-01'
       tickers:
         description: 'Tickers (SPY, qqq, wulf,...)'
         required: true
