@@ -155,3 +155,6 @@ for symbol in np.unique(tickers):
     if not symbol_df.empty:
         symbol_file = os.path.join(output_dir, f"{symbol}.csv")
         symbol_df.to_csv(symbol_file, index=False)
+    else:
+        print(f"\n--- Fail to write {symbol} to csv---")
+
