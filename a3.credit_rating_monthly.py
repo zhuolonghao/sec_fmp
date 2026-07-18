@@ -66,7 +66,7 @@ if all_tickers_price:
     price_df = pd.concat(all_tickers_price, axis=0, ignore_index=False)
     price_file = os.path.join(output_dir, "_price.xlsx")
     price_df.to_excel(price_file, index=False)
-    print(price_df.head(3))
+    print(f"Saved {price_file}")
 
     
 # ------------------------------------------------------------------
@@ -146,19 +146,18 @@ output_df = (
     .sort_values(['symbol', 'date'])
     .reset_index(drop=True)
 )
-print(output_df.head(3))
 
 # ------------------------------------------------------------------
 # 3. Save to CSV
 # ------------------------------------------------------------------
-print(f"\n--- Writing to BQR folder --- {np.unique(tickers)} vs {output_df['symbol'].unique()}")
+print(f"\n--- Writing to BQR folder ---")
 
 for symbol in np.unique(tickers):
     symbol_df = output_df[output_df['symbol'] == symbol]
-    print(symbol_df.head(3))
     if not symbol_df.empty:
         symbol_file = os.path.join(output_dir, f"{symbol}.csv")
         symbol_df.to_csv(symbol_file, index=False)
+        print(f"Saved {symbol_file}")
     else:
         print(f"\n--- Fail to write {symbol} to csv---")
 
