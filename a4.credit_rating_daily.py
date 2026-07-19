@@ -29,15 +29,16 @@ from zscore_stats import (
 )
 
 wulf_columns = [    
-    "anchor_date", "symbol", "anchor_close","sigma (%)",
-    "date","open","low","close","cumulative_return_from_anchor",
-
+    "anchor_date", "anchor_close",  
+    "symbol", "sigma (%)", "date", "cumulative_return_from_anchor",
+   
     'decline_trigger_price_10', 'decline_trigger_10',
     'decline_trigger_price_15', 'decline_trigger_15',
     'decline_trigger_price_20', 'decline_trigger_20',
     "trigger_price_n1_5",'low_trigger_n1_5',
     "trigger_price_n2_0",'low_trigger_n2_0',
-    "trigger_price_n2_5",'low_trigger_n2_5'
+    "trigger_price_n2_5",'low_trigger_n2_5',
+    "open","low","close", "volume",
 ]
 
 column_rename_map = {
@@ -72,7 +73,8 @@ column_rename_map = {
 
 output_dir = Path("bqr")
 csv_files = list(output_dir.rglob("*.csv"))
-csv_files = [f for f in csv_files if f != Path("bqr/_triggered.csv")]
+csv_files = [ f for f in csv_files if not f.match("bqr/_triggered_*.csv")]
+
 
 latest_by_ticker = {}
 
@@ -101,7 +103,6 @@ result = [
 
 # ------------------------------------------------------------------
 # 2. Process each ticker to calculate z-score statistics and decline triggers
-#    and save to _triggered.csv / xlsx
 # ------------------------------------------------------------------
 
 client1 = FMPClient()
@@ -147,52 +148,18 @@ for env_anchor_date, symbol in result:
         all_tickers_price.append(triggered_df.drop(columns=["first_trigger"]))
 
 
+# ------------------------------------------------------------------
+# 3. save to CSV by anchor date
+# ------------------------------------------------------------------
 if all_tickers_price:
-    price_df = pd.concat(all_tickers_price, axis=0, ignore_index=False)
+    price_df = pd.concat(all_tickers_price, axis=0, ignore_index=True)
     price_df['date'] = price_df['date'].dt.strftime('%Y-%m-%d')
     price_df['anchor date'] = price_df['anchor date'].dt.strftime('%Y-%m-%d')
     price_df = price_df.sort_values(['anchor date', 'symbol', 'date'], ascending=[False, True, True])
-
-    price_file = os.path.join(output_dir, "_triggered.csv")
-    price_df.replace(False, np.nan).to_csv(price_file, index=False)
-    print(f"Saved {price_file}")
-
-
-    # Replace only actual boolean False values, not numeric zero
-    for column in price_df.columns:
-        if pd.api.types.is_bool_dtype(price_df[column]):
-            price_df[column] = price_df[column].replace(False, np.nan)
-
-    color_map = {
-
-        # Greens
-        'trig dd10':'#F2FAF2',
-        'trig dd15':'#D9F0D3',
-        'trig dd20':'#A1D99B',
-
-        # Blues
-        'trig z1.5':'#F4F8FD',
-        'trig z2.0':'#D6E9F8',
-        'trig z2.5':'#9ECAE1',
-
-    }
-
-    styled = price_df.style.set_properties(**{'color': 'black'})
-    # add background colors
-    for column, background_color in color_map.items():
-        if column in price_df.columns:
-            styled = styled.set_properties(
-                subset=pd.IndexSlice[:, [column]],
-                **{
-                    'background-color': background_color,
-                },
-            )
-    price_file = os.path.join(output_dir, '_triggered.xlsx')
-
-    styled.to_excel(
-        price_file,
-        index=False,
-        engine='openpyxl',
-    )
-
-    print(f'Saved {price_file}')
+    price_df = price_df.replace(False, np.nan)
+    
+    for anchor_date in price_df['anchor date'].unique():
+        anchor_df = price_df[price_df['anchor date'] == anchor_date]
+        anchor_file = os.path.join(output_dir, f"_triggered_{anchor_date}.csv")
+        anchor_df.drop(columns=['anchor date', 'anchor close']).to_csv(anchor_file, index=False)
+        print(f"Saved {anchor_file}")
