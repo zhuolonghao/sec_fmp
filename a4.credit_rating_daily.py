@@ -29,7 +29,7 @@ from zscore_stats import (
 )
 
 wulf_columns = [    
-    "symbol","anchor_date","anchor_close","sigma (%)",
+    "anchor_date", "symbol", "anchor_close","sigma (%)",
     "date","open","low","close","cumulative_return_from_anchor",
 
     'decline_trigger_price_10', 'decline_trigger_10',
@@ -72,6 +72,7 @@ column_rename_map = {
 
 output_dir = Path("bqr")
 csv_files = list(output_dir.rglob("*.csv"))
+csv_files = [f for f in csv_files if f != Path("bqr/_triggered.csv")]
 
 latest_by_ticker = {}
 
@@ -140,7 +141,7 @@ for env_anchor_date, symbol in result:
     output_df['first_trigger'] = output_df.groupby(['trig dd10', 'trig dd15', 'trig dd20', 'trig z1.5', 'trig z2.0', 'trig z2.5']).cumcount() + 1
     true_trigger = output_df[['trig dd10', 'trig dd15', 'trig dd20', 'trig z1.5', 'trig z2.0', 'trig z2.5']].any(axis=1)
     first_trigger = output_df['first_trigger']  == 1
-    triggered_df = output_df[true_trigger & first_trigger].sort_values(['date', 'anchor date'], ascending=[False, True])
+    triggered_df = output_df[true_trigger & first_trigger]
 
     if triggered_df is not None and not triggered_df.empty:
         all_tickers_price.append(triggered_df.drop(columns=["first_trigger"]))
@@ -150,6 +151,7 @@ if all_tickers_price:
     price_df = pd.concat(all_tickers_price, axis=0, ignore_index=False)
     price_df['date'] = price_df['date'].dt.strftime('%Y-%m-%d')
     price_df['anchor date'] = price_df['anchor date'].dt.strftime('%Y-%m-%d')
+    price_df = price_df.sort_values(['anchor date', 'symbol', 'date'], ascending=[False, True, True])
 
     price_file = os.path.join(output_dir, "_triggered.csv")
     price_df.replace(False, np.nan).to_csv(price_file, index=False)
