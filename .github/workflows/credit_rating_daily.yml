@@ -1,0 +1,111 @@
+name: Daily Price Trigger for Credit Rating
+
+on:
+  schedule:
+    - cron: '19 22 * * 1-5' # Runs at 10:19 PM UTC, Monday through Friday
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: repo-write-main
+  cancel-in-progress: false
+
+jobs:
+  run-assessment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Confirm workflow version
+        run: |
+          echo "Running updated Daily Price Trigger workflow"
+          echo "Commit SHA: $GITHUB_SHA"
+          git status
+          git log -1 --oneline
+
+      - name: Sync with latest main
+        run: |
+          git fetch origin main
+          git checkout main
+          git reset --hard origin/main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Credit Rating Script
+        env:
+          FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
+        run: python a4.credit_rating_daily.py
+
+      - name: Commit and push changes
+        id: commit_step
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+
+          git add bqr/
+
+          if git diff --staged --quiet; then
+            echo "No new filings to commit."
+            echo "changes_pushed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git commit -m "Automated Credit Rating Assessment"
+
+          for i in 1 2 3; do
+            echo "Push attempt $i..."
+
+            git fetch origin main
+
+            if git rebase origin/main; then
+              echo "Rebase successful."
+            else
+              echo "Rebase failed. Aborting."
+              git rebase --abort || true
+              exit 1
+            fi
+
+            if git push origin HEAD:main; then
+              echo "Push succeeded."
+              echo "changes_pushed=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+
+            echo "Push failed, retrying in 5 seconds..."
+            sleep 5
+          done
+
+          echo "Push failed after 3 attempts."
+          exit 1
+
+      - name: Send Email Notification
+        if: steps.commit_step.outputs.changes_pushed == 'true'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "SEC Credit Rating Tracker: Updated"
+          to: longhao.zhuo@gmail.com
+          from: GitHub Actions Tracker
+          body: |
+            The automated tracker has detected updates to the credit rating assessments.
+
+            You can review the new files in your repository here:
+            https://github.com/${{ github.repository }}/commits/main
