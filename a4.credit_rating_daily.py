@@ -101,7 +101,7 @@ result = [
 
 # ------------------------------------------------------------------
 # 2. Process each ticker to calculate z-score statistics and decline triggers
-#    and save to _triggered.csv 
+#    and save to _triggered.csv / xlsx
 # ------------------------------------------------------------------
 
 client1 = FMPClient()
@@ -156,3 +156,43 @@ if all_tickers_price:
     price_file = os.path.join(output_dir, "_triggered.csv")
     price_df.replace(False, np.nan).to_csv(price_file, index=False)
     print(f"Saved {price_file}")
+
+
+    # Replace only actual boolean False values, not numeric zero
+    for column in price_df.columns:
+        if pd.api.types.is_bool_dtype(price_df[column]):
+            price_df[column] = price_df[column].replace(False, np.nan)
+
+    color_map = {
+
+        # Greens
+        'trig dd10':'#F2FAF2',
+        'trig dd15':'#D9F0D3',
+        'trig dd20':'#A1D99B',
+
+        # Blues
+        'trig z1.5':'#F4F8FD',
+        'trig z2.0':'#D6E9F8',
+        'trig z2.5':'#9ECAE1',
+
+    }
+
+    styled = price_df.style.set_properties(**{'color': 'black'})
+    # add background colors
+    for column, background_color in color_map.items():
+        if column in price_df.columns:
+            styled = styled.set_properties(
+                subset=pd.IndexSlice[:, [column]],
+                **{
+                    'background-color': background_color,
+                },
+            )
+    price_file = os.path.join(output_dir, '_triggered.xlsx')
+
+    styled.to_excel(
+        price_file,
+        index=False,
+        engine='openpyxl',
+    )
+
+    print(f'Saved {price_file}')
