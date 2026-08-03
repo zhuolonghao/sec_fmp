@@ -1,8 +1,8 @@
-name: Daily Price Trigger for Credit Rating
+name: Daily Exit Trigger Workflow
 
 on:
   schedule:
-    - cron: '29 22 * * 1-5' # Runs at 10:29 PM UTC, Monday through Friday
+    - cron: '49 22 * * 1-5' # Runs at 10:49 PM UTC, Monday through Friday
   workflow_dispatch:
 
 permissions:
@@ -48,7 +48,7 @@ jobs:
       - name: Run Credit Rating Script
         env:
           FMP_API_KEY: ${{ secrets.FMP_API_KEY }}
-        run: python a4.credit_rating_daily.py
+        run: python a5.stop_loss.py
 
       - name: Commit and push changes
         id: commit_step
@@ -101,11 +101,11 @@ jobs:
           secure: true
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: "SEC Credit Rating Tracker: Updated"
+          subject: "Exit Trigger: Updated"
           to: longhao.zhuo@gmail.com
           from: GitHub Actions Tracker
           body: |
-            The automated tracker has detected updates to the credit rating assessments.
+            The automated tracker has detected updates to the exit triggers.
 
             You can review the new files in your repository here:
             https://github.com/${{ github.repository }}/commits/main
