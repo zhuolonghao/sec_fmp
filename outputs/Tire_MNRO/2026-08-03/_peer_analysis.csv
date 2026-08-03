@@ -1,0 +1,51 @@
+Category,Metric,GT,MNRO
+Header,Fiscal Period,2026-Q1,2027-Q1
+Header,Statement Date,2026-03-31,2026-06-30
+Header,Filing Date,2026-05-07,2026-07-29
+Revenue & Margin,Segment-1,-,Tires
+Revenue & Margin,Segment-1 %,-,47.6%
+Revenue & Margin,Segment-2,-,Maintenance
+Revenue & Margin,Segment-2 %,-,27.0%
+Revenue & Margin,Segment-3,-,Brakes
+Revenue & Margin,Segment-3 %,-,13.4%
+Revenue & Margin,Others,-,"Steering, Batteries, Exhaust, Franchise Royalties"
+Revenue & Margin,Others %,-,12.0%
+Revenue & Margin,Revenue Total ($k),"17,908,000","1,143,269"
+Revenue & Margin,Rev-CoGS / Rev,18.56%,34.88%
+Revenue & Margin,Rev-CoGS-SG&A / Rev,2.78%,3.34%
+Revenue & Margin,Rev-CoGs-SG&A-Other.OpEx / Rev,2.78%,3.34%
+Revenue & Margin,Net Income / Rev,-11.64%,0.71%
+EBITDA,Net Income ($k),"-2,085,000","8,074"
+EBITDA,D & A ($k),"1,025,000",61
+EBITDA,Net Interest Expense ($k),"392,000","17,084"
+EBITDA,Tax Provision ($k),"1,620,000","3,731"
+EBITDA,EBITDA ($k),"952,000","28,950"
+EBITDA,Stock-Based Comp ($k),"11,000",652
+EBITDA,Others Adj.,TBD,TBD
+EBITDA,Adj. EBITDA,TBD,TBD
+EBITDA,Covenant EBITDA,TBD,TBD
+Capital Structure,Stock Price,6.63,17.22
+Capital Structure,O/S Shares,"288,000,000","30,145,000"
+Capital Structure,Market Capitalization ($k),"1,909,440","519,097"
+Capital Structure,Cash ($k),"723,000","9,526"
+Capital Structure,Debt ($k),"8,032,000","527,843"
+Capital Structure,Enterprise Value ($k),"9,218,440","1,037,414"
+Capital Structure,netCommonStockIssuance ($k),0,0
+Capital Structure,netDebtIssuance ($k),"807,000","38,160"
+Liquidity & Cash Flow,DSO,56.4,7.4
+Liquidity & Cash Flow,DIO,96.4,76.7
+Liquidity & Cash Flow,DPO,97.5,147.4
+Liquidity & Cash Flow,CCC,55.4,-63.4
+Liquidity & Cash Flow,OCF ($k),"616,000","41,989"
+Liquidity & Cash Flow,CapEx ($k),"-742,000",-131
+Liquidity & Cash Flow,FCF ($k),"-126,000","41,858"
+BQR-Mid-Mkt,Total Debt / Equity,2.7x,0.9x
+BQR,Total Debt / Adj Ebitda,8.4x,18.2x
+BQR,Adj Ebitda / Interest Expense,2.4x,1.7x
+BQR,Net Income before extraordinary ($k),"-2,085,000","8,074"
+BQR,(NCO-CAPEX) / Total Debt,-1.57%,7.93%
+BQR,Score: Operating Leverage,75,75
+BQR,Score: ICR,65,65
+BQR,Score: Net Income,75,55
+BQR,Score: FCF/Debt,75,58
+BQR,BQR,73.5,64.2
