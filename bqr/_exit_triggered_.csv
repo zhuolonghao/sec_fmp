@@ -17,7 +17,7 @@ PENN,2026-05-19,16.3,2.53,False,,True,2026-05-28,False,,True,2026-06-01,True,202
 TT,2026-05-19,451.15,1.3,False,,False,,False,,True,2026-06-18,True,2026-06-22,False,,False,
 TYL,2026-06-01,323.0,1.67,False,,False,,False,,True,2026-07-17,True,2026-07-20,False,,False,
 WMB,2026-06-11,72.21,1.34,False,,False,,False,,True,2026-06-26,False,,False,,False,
-EXE,2026-06-11,87.25,1.73,False,,False,,False,,False,,False,,False,,False,
+EXE,2026-06-11,87.25,1.73,False,,False,,False,,True,2026-08-10,False,,False,,False,
 AR,2026-06-11,35.19,2.25,False,,False,,False,,False,,False,,False,,False,
 AMD,2026-06-11,478.13,2.92,False,,True,2026-06-30,False,,True,2026-06-15,True,2026-06-15,False,,False,
 BRO,2026-07-06,68.17,1.44,False,,False,,False,,True,2026-07-07,True,2026-07-07,True,2026-07-07,True,2026-07-07
