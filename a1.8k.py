@@ -21,6 +21,8 @@ output_dir = Path("sec_filings_8k") / date.today().strftime("%Y-%m-%d")
 output_dir.mkdir(parents=True, exist_ok=True) 
 
 #--------------------------------------------
+import os, requests
+from datetime import datetime
 key = os.getenv("FMP_API_KEY")
 print("key present:", bool(key), "len:", len(key or ""))
 print("runner date:", datetime.now().strftime("%Y-%m-%d %H:%M"))
