@@ -48,7 +48,11 @@ class FMPClient:
         from_date = (now_et - timedelta(days=365*3)).strftime('%Y-%m-%d')
         from_date_1y = (now_et - timedelta(days=180)).strftime('%Y-%m-%d')
         from_date_8k = (now_et - timedelta(days=lookback_days)).strftime('%Y-%m-%d')
-        
+
+        # set for any date for 8k filings
+        #from_date_8k = (now_et - timedelta(days=2)).strftime('%Y-%m-%d')
+        #to_date = from_date_8k
+
         if endpoint in ('revenue-product-segmentation', 'revenue-geographic-segmentation'):
             url = f"{self.base_url}/{endpoint}?symbol={symbol}&apikey={self.api_key}"
         elif endpoint in ('historical-price-eod'):

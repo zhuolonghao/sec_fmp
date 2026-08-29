@@ -21,17 +21,13 @@ pd.set_option('display.expand_frame_repr', False)
 # Anchor everything to market time. On a GitHub runner the clock is UTC, so
 # after 8pm ET the machine already thinks it is tomorrow.
 RUN_DATE = datetime.now(MARKET_TZ).strftime("%Y-%m-%d")
-
 # 0 = today only. Raise it (LOOKBACK_DAYS=3) to backfill after a missed run.
 LOOKBACK_DAYS = int(os.getenv("LOOKBACK_DAYS", "0"))
-
 # Requests to sec.gov must carry a real contact address.
 SEC_USER_AGENT = os.getenv("SEC_USER_AGENT", "Dave Zhuo zhuo.longhao@gmail.com")
-
 # Politeness delay for sec.gov. Runner IPs are shared and get throttled harder
 # than your home connection, so this is deliberately slower than 0.2s.
 SEC_DELAY = float(os.getenv("SEC_DELAY", "0.5"))
-
 ROOT_DIR = Path("sec_filings_8k")
 output_dir = ROOT_DIR / RUN_DATE
 output_dir.mkdir(parents=True, exist_ok=True)
