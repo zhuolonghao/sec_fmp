@@ -4,7 +4,7 @@ import time
 import re
 import requests
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
@@ -221,7 +221,7 @@ matched_df = results_df[
 if not matched_df.empty:
     matched_df = matched_df[["symbol", "filingDate", "filing_detail_url", "document_type"]]
     matched_df.to_csv(output_dir / "filings_8k_assessment_matched.csv", index=False)
-    print(f"Exported {len(matched_df)} matched 8-K filings.")
+    print(f"Exported {len(matched_df)} matched 8-K filings. to {output_dir}")
 else:
     print("No matched 8-K documents in this window.")
 
