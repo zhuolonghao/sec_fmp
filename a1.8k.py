@@ -20,6 +20,17 @@ pd.set_option('display.expand_frame_repr', False)
 output_dir = Path("sec_filings_8k") / date.today().strftime("%Y-%m-%d")
 output_dir.mkdir(parents=True, exist_ok=True) 
 
+#--------------------------------------------
+key = os.getenv("FMP_API_KEY")
+print("key present:", bool(key), "len:", len(key or ""))
+print("runner date:", datetime.now().strftime("%Y-%m-%d %H:%M"))
+d = datetime.now().strftime("%Y-%m-%d")
+url = f"https://financialmodelingprep.com/stable/sec-filings-8k?from={d}&to={d}&page=0&limit=1000&apikey={key}"
+r = requests.get(url, timeout=30)
+print(r.status_code, r.text[:500])
+#--------------------------------------------
+
+
 # --- Instantiate the Classes ---
 client1 = FMPClient()
 filings_8k = client1.get_data('sec-filings-8k', "ALL")
