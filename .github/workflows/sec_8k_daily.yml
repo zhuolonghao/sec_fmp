@@ -2,7 +2,7 @@ name: Daily 8-K Assessment
 
 on:
   schedule:
-    - cron: '19 22 * * 1-5' # Runs at 10:19 PM UTC, Monday through Friday
+    - cron: '30 22 * * 1-5' # Runs at 10:19 PM UTC, Monday through Friday
   workflow_dispatch:
 
 permissions:

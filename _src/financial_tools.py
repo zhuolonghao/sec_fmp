@@ -4,7 +4,22 @@ import time
 import os
 import ast
 from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 from pandas.tseries.offsets import MonthEnd
+
+# All date windows are anchored to US market time, not the machine clock.
+# A GitHub Actions runner is on UTC, so datetime.now() there can already be
+# tomorrow's date while it is still a trading day in Charlotte.
+MARKET_TZ = ZoneInfo("America/New_York")
+
+
+class FMPError(RuntimeError):
+    """Raised when FMP itself fails: bad key, quota, blocked IP, network error.
+
+    Deliberately distinct from an empty result. An empty list is a real answer
+    (weekend, holiday, nothing filed). This exception is not.
+    """
+    pass
 
 class FMPClient:
     """
@@ -15,15 +30,24 @@ class FMPClient:
         self.api_key = os.getenv('FMP_API_KEY')
         self.base_url = "https://financialmodelingprep.com/stable"
 
-    def get_data(self, endpoint, symbol):
+    def get_data(self, endpoint, symbol, raise_on_error=False, lookback_days=0):
         """
         Fetches data with built-in error handling.
+
+        raise_on_error : if True, raise FMPError instead of returning [] when the
+                         request fails. Use this in scheduled jobs so a broken key
+                         or a blocked IP turns the run red instead of looking like
+                         a quiet day. Defaults to False so existing callers are
+                         unaffected.
+        lookback_days  : widens the start of the 8-K window by N days. 0 = today
+                         only. Bump it to backfill after a missed or failed run.
         """
-        # Calculate date range for past 6 months
-        to_date = datetime.now().strftime('%Y-%m-%d')
-        yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
-        from_date = (datetime.now() - timedelta(days=365*3)).strftime('%Y-%m-%d')
-        from_date_1y = (datetime.now() - timedelta(days=180)).strftime('%Y-%m-%d')
+        now_et = datetime.now(MARKET_TZ)
+        to_date = now_et.strftime('%Y-%m-%d')
+        yesterday = (now_et - timedelta(days=1)).strftime('%Y-%m-%d')
+        from_date = (now_et - timedelta(days=365*3)).strftime('%Y-%m-%d')
+        from_date_1y = (now_et - timedelta(days=180)).strftime('%Y-%m-%d')
+        from_date_8k = (now_et - timedelta(days=lookback_days)).strftime('%Y-%m-%d')
         
         if endpoint in ('revenue-product-segmentation', 'revenue-geographic-segmentation'):
             url = f"{self.base_url}/{endpoint}?symbol={symbol}&apikey={self.api_key}"
@@ -34,23 +58,57 @@ class FMPClient:
         elif endpoint in ('sec-filings-search'):
             url = f"{self.base_url}/{endpoint}/symbol?symbol={symbol}&from={from_date}&to={to_date}&page=0&limit=300&apikey={self.api_key}"
         elif endpoint in ('sec-filings-8k'):
-            url = f"{self.base_url}/{endpoint}?&from={to_date}&to={to_date}&page=0&limit=1000&apikey={self.api_key}"
+            url = f"{self.base_url}/{endpoint}?from={from_date_8k}&to={to_date}&page=0&limit=1000&apikey={self.api_key}"
         else:
             url = f"{self.base_url}/{endpoint}?symbol={symbol}&period=quarter&limit=20&apikey={self.api_key}"
+        if not self.api_key:
+            msg = "FMP_API_KEY is not set in this environment."
+            if raise_on_error:
+                raise FMPError(msg)
+            print(f"   Error: {msg}")
+            return []
+
         try:
-            print(f"   Fetching {endpoint} for {symbol}...")
-            response = requests.get(url)
+            if endpoint == 'sec-filings-8k':
+                print(f"   Fetching {endpoint} for {from_date_8k} to {to_date} (ET)...")
+            else:
+                print(f"   Fetching {endpoint} for {symbol}...")
+
+            response = requests.get(url, timeout=(10, 60))
             response.raise_for_status()
             data = response.json()
 
-            # Error handling for FMP format
-            if isinstance(data, dict) and "Error Message" in data:
+            # FMP signals some failures with HTTP 200 and an error object.
+            if isinstance(data, dict) and ("Error Message" in data or "error" in data):
+                msg = data.get("Error Message") or data.get("error")
+                if raise_on_error:
+                    raise FMPError(f"{endpoint}: {msg}")
+                print(f"   Error: {msg}")
                 return []
-            # Return the RAW LIST (do not convert to DF here)
-            return data if isinstance(data, list) else []
 
+            if not isinstance(data, list):
+                msg = f"{endpoint}: unexpected payload type {type(data).__name__}: {str(data)[:200]}"
+                if raise_on_error:
+                    raise FMPError(msg)
+                print(f"   Error: {msg}")
+                return []
+
+            return data
+
+        except FMPError:
+            raise
+        except requests.HTTPError as e:
+            body = e.response.text[:300] if e.response is not None else ""
+            msg = f"{endpoint}: HTTP {e.response.status_code if e.response is not None else '?'} - {body}"
+            if raise_on_error:
+                raise FMPError(msg) from e
+            print(f"   Error: {msg}")
+            return []
         except Exception as e:
-            print(f"   Error: {e}")
+            msg = f"{endpoint}: {type(e).__name__}: {e}"
+            if raise_on_error:
+                raise FMPError(msg) from e
+            print(f"   Error: {msg}")
             return []
 
 class FinancialAnalyzer:

@@ -1,15 +1,16 @@
 import sys
+import os
 import time
 import re
 import requests
 import pandas as pd
-from datetime import date
+from datetime import datetime
 from pathlib import Path
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
 sys.path.insert(0, "_src")
-from financial_tools import FMPClient
+from financial_tools import FMPClient, FMPError, MARKET_TZ
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_colwidth', None)
@@ -17,55 +18,81 @@ pd.set_option('display.max_rows', None)
 pd.set_option('display.expand_frame_repr', False)
 
 # --- Configuration ---
-output_dir = Path("sec_filings_8k") / date.today().strftime("%Y-%m-%d")
-output_dir.mkdir(parents=True, exist_ok=True) 
+# Anchor everything to market time. On a GitHub runner the clock is UTC, so
+# after 8pm ET the machine already thinks it is tomorrow.
+RUN_DATE = datetime.now(MARKET_TZ).strftime("%Y-%m-%d")
 
-#--------------------------------------------
-import os, requests
-from datetime import datetime
-key = os.getenv("FMP_API_KEY")
-print("key present:", bool(key), "len:", len(key or ""))
-print("runner date:", datetime.now().strftime("%Y-%m-%d %H:%M"))
-d = datetime.now().strftime("%Y-%m-%d")
-url = f"https://financialmodelingprep.com/stable/sec-filings-8k?from={d}&to={d}&page=0&limit=1000&apikey={key}"
-r = requests.get(url, timeout=30)
-print(r.status_code, r.text[:500])
-#--------------------------------------------
+# 0 = today only. Raise it (LOOKBACK_DAYS=3) to backfill after a missed run.
+LOOKBACK_DAYS = int(os.getenv("LOOKBACK_DAYS", "0"))
 
+# Requests to sec.gov must carry a real contact address.
+SEC_USER_AGENT = os.getenv("SEC_USER_AGENT", "Dave Zhuo zhuo.longhao@gmail.com")
+
+# Politeness delay for sec.gov. Runner IPs are shared and get throttled harder
+# than your home connection, so this is deliberately slower than 0.2s.
+SEC_DELAY = float(os.getenv("SEC_DELAY", "0.5"))
+
+ROOT_DIR = Path("sec_filings_8k")
+output_dir = ROOT_DIR / RUN_DATE
+output_dir.mkdir(parents=True, exist_ok=True)
+
+# Filings already scanned on a previous run. Only useful if this directory
+# survives between runs (committed back to the repo, or restored from cache).
+SEEN_PATH = ROOT_DIR / "_seen_filings.txt"
 
 # --- Instantiate the Classes ---
 client1 = FMPClient()
-filings_8k = client1.get_data('sec-filings-8k', "ALL")
 
-# ==========================================
-# FIX 1: Robust check for null or empty data
-# ==========================================
+# raise_on_error=True: a bad key, an exhausted quota or a blocked IP now raises
+# FMPError and fails the job, instead of returning [] and looking like a quiet
+# day. An empty list from here is a genuine "nothing was filed".
+filings_8k = client1.get_data(
+    'sec-filings-8k', "ALL", raise_on_error=True, lookback_days=LOOKBACK_DAYS
+)
+
 if not filings_8k:
-    print("⚠️ No 8-K filings found today (API returned null or empty). Exiting early.")
-    sys.exit(0) # Safely stops the script here without crashing the GitHub Action
+    print(f"No 8-K filings for {RUN_DATE} (ET). Weekend or holiday. Nothing to do.")
+    sys.exit(0)
 
 pd.DataFrame(filings_8k).to_csv(output_dir / "filings_8k.csv", index=False)
+
+# --- Skip anything already processed on an earlier run ---
+seen = set()
+if SEEN_PATH.exists():
+    seen = {line.strip() for line in SEEN_PATH.read_text().splitlines() if line.strip()}
+
+pending = [f for f in filings_8k if f.get("link") not in seen]
+skipped = len(filings_8k) - len(pending)
+print(f"{len(filings_8k)} filings returned | {skipped} already seen | {len(pending)} to scan")
+
+if not pending:
+    print("Everything in this window has already been processed.")
+    sys.exit(0)
 
 SEC_BASE = "https://www.sec.gov"
 
 session = requests.Session()
 session.headers.update({
-    "User-Agent": "Dave Zhuo zhuo.longhao@gmail.com",
+    "User-Agent": SEC_USER_AGENT,
     "Accept-Encoding": "gzip, deflate",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
 })
 
-def download_sec_html(url, timeout=(5, 20)):
-    # Added Rate Limit Protection
-    for attempt in range(3):
+
+def download_sec_html(url, timeout=(10, 30)):
+    """Fetch a page from sec.gov with exponential backoff on throttling."""
+    delay = 5
+    for attempt in range(4):
         r = session.get(url, timeout=timeout)
-        if r.status_code == 429:
-            print("⚠️ Rate limited by SEC. Sleeping for 10 seconds...")
-            time.sleep(10)
+        if r.status_code in (429, 403):
+            print(f"   Throttled by SEC ({r.status_code}). Sleeping {delay}s...")
+            time.sleep(delay)
+            delay *= 2
             continue
         r.raise_for_status()
         return r.text
-    raise Exception(f"Failed to fetch {url} after 3 attempts.")
+    raise Exception(f"Failed to fetch {url} after 4 attempts.")
+
 
 def html_to_clean_text(html):
     soup = BeautifulSoup(html, "html.parser")
@@ -74,6 +101,7 @@ def html_to_clean_text(html):
     text = soup.get_text(" ", strip=True)
     text = re.sub(r"\s+", " ", text)
     return text
+
 
 def extract_sec_documents(filing_detail_url, filing_detail_html):
     soup = BeautifulSoup(filing_detail_html, "html.parser")
@@ -105,6 +133,7 @@ def extract_sec_documents(filing_detail_url, filing_detail_html):
         })
     return docs
 
+
 def has_keywords_in_text(text):
     text = text.lower()
     keywords = [
@@ -113,6 +142,7 @@ def has_keywords_in_text(text):
         "entry into a material definitive agreement", "item 1.01",
     ]
     return any(keyword in text for keyword in keywords)
+
 
 def search_actual_sec_documents(filing_detail_url):
     index_html = download_sec_html(filing_detail_url)
@@ -131,7 +161,7 @@ def search_actual_sec_documents(filing_detail_url):
                 "document": doc["document"], "url": doc["url"],
                 "matched": matched, "text": text,
             })
-            time.sleep(0.2)
+            time.sleep(SEC_DELAY)
         except Exception as e:
             results.append({
                 "type": doc["type"], "description": doc["description"],
@@ -140,12 +170,16 @@ def search_actual_sec_documents(filing_detail_url):
             })
     return results
 
+
 all_results = []
-for i, filing in enumerate(filings_8k, start=1):
+processed_urls = []
+failed_filings = 0
+
+for i, filing in enumerate(pending, start=1):
     symbol = filing.get("symbol")
     filing_date = filing.get("filingDate")
     filing_detail_url = filing.get("link")
-    print(f"[{i}/{len(filings_8k)}] Assessing: {symbol} | {filing_date}")
+    print(f"[{i}/{len(pending)}] Assessing: {symbol} | {filing_date}")
     try:
         doc_results = search_actual_sec_documents(filing_detail_url)
         matched_docs = [r for r in doc_results if r["matched"]]
@@ -156,39 +190,51 @@ for i, filing in enumerate(filings_8k, start=1):
                 "document_description": r.get("description"), "document_url": r.get("url"),
                 "matched": r.get("matched"), "error": r.get("error"),
             })
+        # Only mark a filing as seen once its index page was actually parsed.
+        processed_urls.append(filing_detail_url)
         if matched_docs:
             print(f"  MATCH: {len(matched_docs)} document(s)")
         else:
             print("  No match")
     except Exception as e:
+        failed_filings += 1
         print(f"  ERROR: {e}")
         all_results.append({
             "symbol": symbol, "filingDate": filing_date, "filing_detail_url": filing_detail_url,
             "document_type": None, "document_description": None, "document_url": None,
             "matched": False, "error": str(e),
         })
-    time.sleep(0.2)
+    time.sleep(SEC_DELAY)
 
-# ==========================================
-# FIX 2: Prevent Pandas errors if no results
-# ==========================================
+if processed_urls:
+    with SEEN_PATH.open("a") as fh:
+        for url in processed_urls:
+            fh.write(f"{url}\n")
+
 if not all_results:
-    print("⚠️ No valid SEC documents were processed. Exiting early.")
-    sys.exit(0)
-
-pd.DataFrame(all_results).to_csv(output_dir / "filings_8k_assessment.csv", index=False)
+    print("No SEC documents were retrieved for any filing.")
+    sys.exit(1)
 
 results_df = pd.DataFrame(all_results)
+results_df.to_csv(output_dir / "filings_8k_assessment.csv", index=False)
 
-# Safety check: Ensure the columns exist before trying to filter them
-if "matched" in results_df.columns and "document_type" in results_df.columns:
-    results_df = results_df[results_df["matched"] == True]
-    results_df = results_df[results_df["document_type"] == "8-K"]
-    
-    # Only export if there is actual data left after filtering
-    if not results_df.empty:
-        results_df = results_df[["symbol", "filingDate", "filing_detail_url", "document_type"]]
-        results_df.to_csv(output_dir / "filings_8k_assessment_matched.csv", index=False)
-        print("✅ Matched documents successfully exported.")
-    else:
-        print("ℹ️ No matched 8-K documents found today. Skipping matched export.")
+matched_df = results_df[
+    (results_df["matched"] == True) & (results_df["document_type"] == "8-K")
+]
+
+if not matched_df.empty:
+    matched_df = matched_df[["symbol", "filingDate", "filing_detail_url", "document_type"]]
+    matched_df.to_csv(output_dir / "filings_8k_assessment_matched.csv", index=False)
+    print(f"Exported {len(matched_df)} matched 8-K filings.")
+else:
+    print("No matched 8-K documents in this window.")
+
+print(
+    f"Summary | filings scanned: {len(processed_urls)} | "
+    f"documents assessed: {len(results_df)} | filings failed: {failed_filings}"
+)
+
+# Fail the run if the SEC side was broadly unreachable rather than just noisy.
+if failed_filings and failed_filings == len(pending):
+    print("Every filing failed to download. Treating this as a failed run.")
+    sys.exit(1)
