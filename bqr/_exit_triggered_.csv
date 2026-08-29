@@ -23,7 +23,7 @@ AMD,2026-06-11,478.13,2.92,False,,True,2026-06-30,False,,True,2026-06-15,True,20
 BRO,2026-07-06,68.17,1.44,False,,False,,False,,True,2026-07-07,True,2026-07-07,True,2026-07-07,True,2026-07-07
 PSA,2026-07-06,323.01,1.38,False,,False,,False,,False,,False,,False,,False,
 MRSH,2026-07-06,174.31,1.15,False,,False,,False,,True,2026-07-07,True,2026-07-08,True,2026-07-17,True,2026-07-28
-ADP,2026-07-06,239.81,1.2,False,,False,,False,,True,2026-07-07,True,2026-07-13,True,2026-07-16,True,2026-07-16
+ADP,2026-07-06,239.81,1.2,False,,True,2026-08-28,False,,True,2026-07-07,True,2026-07-13,True,2026-07-16,True,2026-07-16
 FAST,2026-07-07,47.15,1.33,False,,False,,False,,True,2026-08-05,True,2026-08-06,True,2026-08-11,False,
 TRN,2026-07-07,33.95,1.76,False,,False,,False,,True,2026-07-28,False,,False,,False,
 PAA,2026-07-10,22.71,1.1,False,,False,,False,,True,2026-07-14,True,2026-07-16,True,2026-07-17,True,2026-07-20
