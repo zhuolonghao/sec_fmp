@@ -222,7 +222,7 @@ def calculate_frozen_sigma(
     )
 
     symbol = str(symbol_df["symbol"].iloc[0])
-    anchor = pd.Timestamp(config.anchor_date).normalize()
+    anchor = pd.Timestamp(config.anchor_date).normalize() - pd.Timedelta(days=31) 
 
     history = symbol_df.loc[
         symbol_df["date"] <= anchor

@@ -2,7 +2,7 @@ import os
 import sys
 import pandas as pd
 import numpy as np
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 # --- Absolute Path Fix for GitHub Actions ---
@@ -20,7 +20,11 @@ pd.set_option('display.expand_frame_repr', False)
 # --- Handle Inputs: Cloud UI ---
 env_tickers = os.environ.get("TARGET_TICKERS")
 env_anchor_date = os.environ.get("TARGET_ANCHOR_DATE")
-env_anchor_date = pd.to_datetime(env_anchor_date, errors="coerce").strftime('%Y-%m-%d')
+# used for local debug
+# env_tickers = 'amd, cifr, wulf'
+# env_anchor_date = '2026-08-01'
+env_anchor_date2 = env_anchor_date 
+env_anchor_date = (pd.to_datetime(env_anchor_date, errors="coerce") - pd.offsets.BusinessDay(1)).strftime('%Y-%m-%d')
 print(f"env_anchor_date: {env_anchor_date}")
 
 # Exit early if inputs are null, empty, or just whitespace
@@ -42,9 +46,9 @@ ticker_list = [env_anchor_date, clean_tickers]
 # Unpack the list directly instead of looping
 category, tickers = ticker_list
 
-output_dir = Path("bqr") / f"{env_anchor_date}_{tickers[0]}"
-output_dir.mkdir(parents=True, exist_ok=True)
 
+output_dir = Path("bqr") / f"{env_anchor_date2}"
+output_dir.mkdir(parents=True, exist_ok=True)
 
 
 # ------------------------------------------------------------------
@@ -88,8 +92,8 @@ config = ZScoreConfig(
     anchor_date=env_anchor_date,
     volatility_returns=252,
     horizon=20,
-    thresholds=(1.5, 2.0, 2.5),
-    decline_thresholds=(0.10, 0.15, 0.20),
+    thresholds=(1.0, 1.5, 2.0, 2.5),
+    decline_thresholds=(0.10, 0.15, 0.20, 0.25, 0.30),
 )
 
 z_df, error_df = calculate_all_z_statistics(
@@ -111,6 +115,10 @@ wulf_columns = [
     'decline_trigger_price_10', 'decline_trigger_10',
     'decline_trigger_price_15', 'decline_trigger_15',
     'decline_trigger_price_20', 'decline_trigger_20',
+    'decline_trigger_price_25', 'decline_trigger_25',
+    'decline_trigger_price_30', 'decline_trigger_30',
+    
+    "trigger_price_n1_0",'low_trigger_n1_0',
     "trigger_price_n1_5",'low_trigger_n1_5',
     "trigger_price_n2_0",'low_trigger_n2_0',
     "trigger_price_n2_5",'low_trigger_n2_5'
@@ -130,6 +138,15 @@ column_rename_map = {
     "decline_trigger_price_20": "px dd20",
     "decline_trigger_20": "trig dd20",
 
+    "decline_trigger_price_25": "px dd25",
+    "decline_trigger_25": "trig dd25",
+
+    "decline_trigger_price_30": "px dd30",
+    "decline_trigger_30": "trig dd30",
+
+    "trigger_price_n1_0": "px z1.0",
+    "low_trigger_n1_0": "trig z1.0",
+
     "trigger_price_n1_5": "px z1.5",
     "low_trigger_n1_5": "trig z1.5",
 
@@ -145,6 +162,13 @@ output_df = (
     .rename(columns=column_rename_map)
     .sort_values(['symbol', 'date'])
     .reset_index(drop=True)
+)
+
+bool_cols = output_df.columns[
+    output_df.dtypes.map(pd.api.types.is_bool_dtype)
+]
+output_df[bool_cols] = (
+    output_df[bool_cols].astype(object).replace({False: ""})
 )
 
 # ------------------------------------------------------------------

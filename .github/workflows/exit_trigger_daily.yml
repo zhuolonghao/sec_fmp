@@ -1,8 +1,8 @@
 name: Daily Exit Trigger Workflow
 
 on:
-  schedule:
-    - cron: '49 22 * * 1-5' # Runs at 10:49 PM UTC, Monday through Friday
+  # schedule:
+  #   - cron: '49 22 * * 1-5' # Runs at 10:49 PM UTC, Monday through Friday
   workflow_dispatch:
 
 permissions:

@@ -7,7 +7,7 @@ on:
         description: 'Anchor Date (2026-07-01)'
         required: true
       tickers:
-        description: 'Tickers (SPY, qqq, wulf,...)'
+        description: 'Tickers (cifr, amd, wulf,...)'
         required: true
 
 permissions:
