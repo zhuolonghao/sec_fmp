@@ -21,8 +21,8 @@ pd.set_option('display.expand_frame_repr', False)
 env_tickers = os.environ.get("TARGET_TICKERS")
 env_anchor_date = os.environ.get("TARGET_ANCHOR_DATE")
 # used for local debug
-env_tickers = 'dow'
-env_anchor_date = '2026-10-01'
+# env_tickers = 'dow'
+# env_anchor_date = '2026-10-01'
 env_anchor_date2 = env_anchor_date 
 env_anchor_date = (pd.to_datetime(env_anchor_date, errors="coerce") - pd.offsets.BusinessDay(1)).strftime('%Y-%m-%d')
 print(f"env_anchor_date: {env_anchor_date}")
