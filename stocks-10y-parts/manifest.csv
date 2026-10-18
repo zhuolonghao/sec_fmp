@@ -1,0 +1,11 @@
+part,first_ticker,last_ticker,tickers,rows,size_mb
+stocks-10y_part01.parquet,A,AYR,1214,1575080,29.8
+stocks-10y_part02.parquet,AYTU,CLDT,1185,1575279,29.6
+stocks-10y_part03.parquet,CLDT-PA,ELS,1123,1575003,29.9
+stocks-10y_part04.parquet,ELS-PC,GRBK,1222,1575429,29.1
+stocks-10y_part05.parquet,GRBK-PA,KIN,1217,1573494,29.2
+stocks-10y_part06.parquet,KINS,MXIM,1184,1574956,29.8
+stocks-10y_part07.parquet,MXL,PLAG,1154,1576427,29.1
+stocks-10y_part08.parquet,PLAN,SHCO,1240,1574412,29.2
+stocks-10y_part09.parquet,SHCR,TSQ,1169,1574425,29.7
+stocks-10y_part10.parquet,TSRI,ZYXIQ,1141,1574883,30.1
