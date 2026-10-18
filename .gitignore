@@ -6,6 +6,7 @@ token.txt
 secrets.json
 config.json
 beta.ipynb
+_sharadar/
 
 # Python bytecode
 __pycache__/
