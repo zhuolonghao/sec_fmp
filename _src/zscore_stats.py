@@ -228,7 +228,7 @@ def calculate_frozen_sigma(
         symbol_df["date"] <= anchor
     ].copy()
 
-    if not (history["date"] == anchor).any():
+    if not (history["date"] <= anchor).any():
         raise ValueError(
             f"{symbol}: no price observation on {anchor.date()}."
         )
