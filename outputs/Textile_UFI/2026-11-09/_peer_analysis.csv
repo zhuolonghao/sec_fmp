@@ -1,0 +1,51 @@
+Category,Metric,UFI
+Header,Fiscal Period,2027-Q1
+Header,Statement Date,2026-09-30
+Header,Filing Date,2026-11-04
+Revenue & Margin,Segment-1,Third Party Manufacturer
+Revenue & Margin,Segment-1 %,49.7%
+Revenue & Margin,Segment-2,All Other Products And Services
+Revenue & Margin,Segment-2 %,35.2%
+Revenue & Margin,Segment-3,R E P R E V E Fiber
+Revenue & Margin,Segment-3 %,14.8%
+Revenue & Margin,Others,Service
+Revenue & Margin,Others %,0.3%
+Revenue & Margin,Revenue Total ($k),"523,549"
+Revenue & Margin,Rev-CoGS / Rev,7.55%
+Revenue & Margin,Rev-CoGS-SG&A / Rev,-0.90%
+Revenue & Margin,Rev-CoGs-SG&A-Other.OpEx / Rev,-0.96%
+Revenue & Margin,Net Income / Rev,-2.91%
+EBITDA,Net Income ($k),"-15,225"
+EBITDA,D & A ($k),"23,832"
+EBITDA,Net Interest Expense ($k),"4,465"
+EBITDA,Tax Provision ($k),"5,375"
+EBITDA,EBITDA ($k),"18,447"
+EBITDA,Stock-Based Comp ($k),"3,217"
+EBITDA,Others Adj.,TBD
+EBITDA,Adj. EBITDA,TBD
+EBITDA,Covenant EBITDA,TBD
+Capital Structure,Stock Price,6.67
+Capital Structure,O/S Shares,"18,588,000"
+Capital Structure,Market Capitalization ($k),"123,982"
+Capital Structure,Cash ($k),"26,091"
+Capital Structure,Debt ($k),"96,854"
+Capital Structure,Enterprise Value ($k),"194,745"
+Capital Structure,netCommonStockIssuance ($k),0
+Capital Structure,netDebtIssuance ($k),"-1,539"
+Liquidity & Cash Flow,DSO,50.6
+Liquidity & Cash Flow,DIO,79.0
+Liquidity & Cash Flow,DPO,23.9
+Liquidity & Cash Flow,CCC,105.8
+Liquidity & Cash Flow,OCF ($k),"39,131"
+Liquidity & Cash Flow,CapEx ($k),"-4,171"
+Liquidity & Cash Flow,FCF ($k),"34,960"
+BQR-Mid-Mkt,Total Debt / Equity,0.4x
+BQR,Total Debt / Adj Ebitda,5.3x
+BQR,Adj Ebitda / Interest Expense,4.1x
+BQR,Net Income before extraordinary ($k),"-15,225"
+BQR,(NCO-CAPEX) / Total Debt,36.10%
+BQR,Score: Operating Leverage,65
+BQR,Score: ICR,55
+BQR,Score: Net Income,65
+BQR,Score: FCF/Debt,35
+BQR,BQR,56.0
