@@ -1,0 +1,51 @@
+Category,Metric,DRVN,MNRO
+Header,Fiscal Period,2026-Q2,2027-Q2
+Header,Statement Date,2026-06-30,2026-09-30
+Header,Filing Date,2026-08-06,2026-10-29
+Revenue & Margin,Segment-1,Company-Operated Store Sales,Tires
+Revenue & Margin,Segment-1 %,69.5%,47.6%
+Revenue & Margin,Segment-2,Supply And Other,Maintenance
+Revenue & Margin,Segment-2 %,14.4%,27.0%
+Revenue & Margin,Segment-3,Franchise And Royalty,Brakes
+Revenue & Margin,Segment-3 %,10.2%,13.4%
+Revenue & Margin,Others,Advertising,"Steering, Batteries, Exhaust, Franchise Royalties"
+Revenue & Margin,Others %,5.8%,12.0%
+Revenue & Margin,Revenue Total ($k),"1,787,144","1,137,993"
+Revenue & Margin,Rev-CoGS / Rev,50.62%,34.76%
+Revenue & Margin,Rev-CoGS-SG&A / Rev,20.01%,2.46%
+Revenue & Margin,Rev-CoGs-SG&A-Other.OpEx / Rev,16.81%,2.62%
+Revenue & Margin,Net Income / Rev,9.86%,0.07%
+EBITDA,Net Income ($k),"176,169",798
+EBITDA,D & A ($k),"120,150","61,728"
+EBITDA,Net Interest Expense ($k),"97,552","17,421"
+EBITDA,Tax Provision ($k),"-3,834",628
+EBITDA,EBITDA ($k),"390,037","80,575"
+EBITDA,Stock-Based Comp ($k),"10,816","2,444"
+EBITDA,Others Adj.,TBD,TBD
+EBITDA,Adj. EBITDA,TBD,TBD
+EBITDA,Covenant EBITDA,TBD,TBD
+Capital Structure,Stock Price,14.07,13.74
+Capital Structure,O/S Shares,"164,481,000","31,295,000"
+Capital Structure,Market Capitalization ($k),"2,314,248","429,993"
+Capital Structure,Cash ($k),"184,047","14,958"
+Capital Structure,Debt ($k),"2,220,443","506,789"
+Capital Structure,Enterprise Value ($k),"4,350,644","921,824"
+Capital Structure,netCommonStockIssuance ($k),0,0
+Capital Structure,netDebtIssuance ($k),"-5,526","-17,681"
+Liquidity & Cash Flow,DSO,37.8,7.8
+Liquidity & Cash Flow,DIO,22.7,76.2
+Liquidity & Cash Flow,DPO,43.0,148.1
+Liquidity & Cash Flow,CCC,17.4,-64.1
+Liquidity & Cash Flow,OCF ($k),"307,913","44,253"
+Liquidity & Cash Flow,CapEx ($k),"-176,076",-204
+Liquidity & Cash Flow,FCF ($k),"131,837","44,049"
+BQR-Mid-Mkt,Total Debt / Equity,2.7x,0.9x
+BQR,Total Debt / Adj Ebitda,5.7x,6.3x
+BQR,Adj Ebitda / Interest Expense,4.0x,4.6x
+BQR,Net Income before extraordinary ($k),"176,169",798
+BQR,(NCO-CAPEX) / Total Debt,5.94%,8.69%
+BQR,Score: Operating Leverage,65,75
+BQR,Score: ICR,58,52
+BQR,Score: Net Income,42,58
+BQR,Score: FCF/Debt,65,58
+BQR,BQR,58.2,63.0
